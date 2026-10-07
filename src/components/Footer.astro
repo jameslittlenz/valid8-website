@@ -1,0 +1,92 @@
+---
+import Logo from './Logo.astro';
+import { navLinks } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <img src="/assets/lines-wide.png" alt="" class="lines" />
+  <section id="contact" class="wrap contact">
+    <div class="intro">
+      <div class="eyebrow on-dark">Get in touch</div>
+      <h2>Talk to us about your digital identity programme</h2>
+    </div>
+    <div class="card">
+      <div class="who">
+        <div class="name">James Little</div>
+        <div class="role">New Zealand Lead</div>
+      </div>
+      <div class="lines-list">
+        <a href="tel:+64223534339" class="big">+64 22 353 4339</a>
+        <a href="mailto:james@valid8.com.au" class="big">james@valid8.com.au</a>
+      </div>
+      <a href="mailto:james@valid8.com.au" class="btn btn-light email">Email James <span>→</span></a>
+    </div>
+  </section>
+
+  <div class="wrap bottom">
+    <div class="cols">
+      <div class="brand">
+        <Logo height={44} onDark />
+        <p>Digital identity and verifiable credentials advisory for government and industry.</p>
+      </div>
+      <div class="links">
+        <div class="col">
+          <div class="col-head">Site</div>
+          <a href="/">Home</a>
+          {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+        </div>
+        <div class="col">
+          <div class="col-head">Where we are</div>
+          <span>Auckland</span>
+          <span>Wellington</span>
+          <span>Australia</span>
+        </div>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© {year} Valid8 Advisory</span>
+      <span>ABN 12 689 510 754</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+  .lines { position: absolute; right: -8%; top: 0; width: min(900px, 90%); opacity: 0.22; pointer-events: none; }
+  .contact {
+    position: relative;
+    padding-top: clamp(64px, 9vw, 112px); padding-bottom: clamp(48px, 7vw, 80px);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+    gap: 48px; align-items: end; scroll-margin-top: 80px;
+  }
+  .intro { display: flex; flex-direction: column; gap: 20px; }
+  .intro h2 { font-size: clamp(34px, 4.6vw, 56px); line-height: 1.06; letter-spacing: -0.03em; text-wrap: balance; }
+  .card {
+    display: flex; flex-direction: column; gap: 18px; padding: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 20px; background: rgba(28, 51, 78, 0.55);
+  }
+  .who { display: flex; flex-direction: column; gap: 4px; }
+  .name { font-family: var(--font-display); font-size: 20px; font-weight: 600; }
+  .role { font-size: 15px; color: #C9D1DC; }
+  .lines-list { display: flex; flex-direction: column; gap: 10px; }
+  .big { font-size: clamp(20px, 2.2vw, 26px); font-weight: 500; color: #fff; text-decoration: none; }
+  .big:hover { color: var(--green-light); }
+  .email { align-self: flex-start; margin-top: 6px; padding: 13px 22px; font-size: 15px; }
+
+  .bottom { position: relative; }
+  .cols {
+    border-top: 1px solid rgba(255, 255, 255, 0.14); padding: 40px 0 28px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;
+  }
+  .brand { display: flex; flex-direction: column; gap: 16px; max-width: 320px; }
+  .brand p { font-size: 14px; line-height: 1.6; color: #C9D1DC; }
+  .links { display: flex; flex-wrap: wrap; gap: 56px; }
+  .col { display: flex; flex-direction: column; gap: 10px; font-size: 15px; }
+  .col-head { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8E98A9; }
+  .col a { color: #fff; text-decoration: none; }
+  .col a:hover { color: var(--green-light); }
+  .legal {
+    border-top: 1px solid rgba(255, 255, 255, 0.14); padding: 20px 0 32px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: #8E98A9;
+  }
+</style>

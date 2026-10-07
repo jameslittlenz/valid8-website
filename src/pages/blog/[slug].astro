@@ -1,0 +1,193 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import { authors } from '../../data/site';
+import { formatDate, getPosts, hasPage, type Post } from '../../lib';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.filter(hasPage).map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props as { post: Post };
+const { data } = post;
+const { Content } = await render(post);
+const author = authors[data.author];
+const more = (await getPosts()).filter((p) => p.id !== post.id && p.data.category === 'Insights').slice(0, 3);
+---
+<Base title={data.title} description={data.excerpt} active="blog">
+  <article>
+    <header class="head">
+      <div class="wrap-narrow head-stack">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/blog/">Blog</a><span>/</span><span class="pill">{data.category}</span></nav>
+        <h1>{data.title}</h1>
+        <p class="standfirst">{data.excerpt}</p>
+        <div class="byline">
+          <div class="byline-who">
+            <img src={author.photo} alt="" style={`object-position:${author.photoPosition}`} />
+            <div><span class="byline-name">{data.author}</span><span class="byline-sub">{author.role} · {formatDate(data.date)}</span></div>
+          </div>
+          <div class="share">
+            <a class="share-btn" target="_blank" rel="noopener" aria-label="Share on LinkedIn" href="https://www.linkedin.com/" data-linkedin>in</a>
+            <button class="share-btn" type="button" aria-label="Copy link" data-copy>⧉</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <figure class="hero">
+        <div class="hero-img"><img src={data.image} alt={data.imageAlt} style={`object-position:${data.imagePosition}`} /></div>
+        {data.imageCaption && <figcaption>{data.imageCaption}</figcaption>}
+      </figure>
+    </div>
+
+    <div class="wrap-narrow body-wrap">
+      <div class="prose"><Content /></div>
+
+      <div class="cta">
+        <div class="cta-copy">
+          <span class="cta-title">Preparing for Trust Framework accreditation?</span>
+          <span class="cta-text">We take providers from readiness assessment through independent evaluation to a regulator decision.</span>
+        </div>
+        <a href="/offerings/#s6" class="btn btn-light cta-btn">See how we help <span>→</span></a>
+      </div>
+
+      <div class="bio">
+        <img src={author.photo} alt="" style={`object-position:${author.photoPosition}`} />
+        <div class="bio-copy">
+          <span class="bio-name">{data.author}</span>
+          <span>{author.bio}</span>
+          <a href="/about/#team">About {data.author.split(' ')[0]} →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  {more.length > 0 && (
+    <section class="more">
+      <div class="wrap more-stack">
+        <div class="more-head">
+          <h2>More insights</h2>
+          <a href="/blog/" class="link-arrow">All posts <span>→</span></a>
+        </div>
+        <div class="more-grid">
+          {more.map((p) => <PostCard post={p} compact />)}
+        </div>
+      </div>
+    </section>
+  )}
+</Base>
+
+<script>
+  const li = document.querySelector<HTMLAnchorElement>('[data-linkedin]');
+  if (li) li.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(location.href)}`;
+
+  document.querySelector<HTMLButtonElement>('[data-copy]')?.addEventListener('click', async (e) => {
+    const btn = e.currentTarget as HTMLButtonElement;
+    try {
+      await navigator.clipboard.writeText(location.href);
+      btn.textContent = '✓';
+      setTimeout(() => (btn.textContent = '⧉'), 1500);
+    } catch {}
+  });
+</script>
+
+<style>
+  .head { padding: clamp(40px, 6vw, 80px) 0 clamp(32px, 4vw, 48px); }
+  .head-stack { display: flex; flex-direction: column; gap: 24px; }
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 14px; color: var(--ink3); }
+  .crumbs a { color: var(--ink3); text-decoration: none; }
+  .crumbs a:hover { color: var(--green); }
+  h1 { font-size: clamp(36px, 5vw, 58px); line-height: 1.06; letter-spacing: -0.035em; text-wrap: balance; }
+  .standfirst { font-size: clamp(19px, 1.8vw, 22px); line-height: 1.5; color: var(--ink2); }
+  .byline {
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;
+    padding-top: 20px; border-top: 1px solid var(--line);
+  }
+  .byline-who { display: flex; align-items: center; gap: 12px; }
+  .byline-who img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+  .byline-who > div { display: flex; flex-direction: column; gap: 2px; }
+  .byline-name { font-size: 15px; font-weight: 600; }
+  .byline-sub { font-size: 14px; color: var(--ink3); }
+  .share { display: flex; gap: 8px; }
+  .share-btn {
+    width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line2); background: transparent;
+    display: flex; align-items: center; justify-content: center; font: 600 13px var(--font-body);
+    color: var(--ink); text-decoration: none; cursor: pointer; padding: 0;
+  }
+  button.share-btn { font-size: 15px; font-weight: 400; }
+  .share-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+  .hero { margin: 0; display: flex; flex-direction: column; gap: 12px; }
+  .hero-img { border-radius: 26px; overflow: hidden; aspect-ratio: 21 / 9; min-height: 240px; background: var(--mint); }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero figcaption { font-size: 14px; color: var(--ink3); }
+
+  .body-wrap {
+    padding-top: clamp(40px, 6vw, 72px); padding-bottom: clamp(64px, 8vw, 96px);
+    display: flex; flex-direction: column; gap: 24px;
+  }
+
+  /* Markdown content */
+  .prose { display: flex; flex-direction: column; gap: 24px; font-size: 18px; line-height: 1.7; color: var(--ink2); }
+  .prose :global(*) { margin: 0; }
+  .prose :global(.lead) { font-size: clamp(20px, 1.9vw, 22px); line-height: 1.6; color: var(--ink); }
+  .prose :global(h2) {
+    margin-top: 24px; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.2; letter-spacing: -0.02em; color: var(--ink);
+  }
+  .prose :global(h3) { margin-top: 12px; font-size: 21px; line-height: 1.3; color: var(--ink); }
+  .prose :global(strong) { color: var(--ink); }
+  .prose :global(a) { font-weight: 600; }
+  .prose :global(blockquote) {
+    margin: 20px 0 0; padding: 8px 0 8px 28px; border-left: 3px solid var(--green-bright);
+    font-family: var(--font-display); font-size: clamp(22px, 2.4vw, 28px); font-weight: 500;
+    line-height: 1.35; letter-spacing: -0.015em; color: var(--ink); text-wrap: balance;
+  }
+  .prose :global(blockquote + h2) { margin-top: 8px; }
+  .prose :global(ul) { padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
+  .prose :global(ol) { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 14px; counter-reset: step; }
+  .prose :global(ol > li) { position: relative; padding-left: 48px; min-height: 34px; counter-increment: step; }
+  .prose :global(ol > li)::before {
+    content: counter(step); position: absolute; left: 0; top: 2px; width: 32px; height: 32px; border-radius: 50%;
+    background: var(--btn); color: var(--btn-ink); display: flex; align-items: center; justify-content: center;
+    font: 600 14px var(--font-display); line-height: 1;
+  }
+  .prose :global(.defs) {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 1px;
+    background: var(--line3); border: 1px solid var(--line3); border-radius: 18px; overflow: hidden; margin: 8px 0;
+  }
+  .prose :global(.defs > div) { background: var(--mint); padding: 20px 22px; display: flex; flex-direction: column; gap: 4px; }
+  .prose :global(.defs strong) { font-family: var(--font-display); font-size: 16px; font-weight: 600; }
+  .prose :global(.defs span) { font-size: 15px; line-height: 1.5; }
+  .prose :global(.chips) { display: flex; flex-wrap: wrap; gap: 8px; }
+  .prose :global(.chips span) {
+    padding: 7px 12px; border: 1px solid var(--line2); border-radius: 8px;
+    font-size: 14px; font-weight: 500; line-height: normal; color: var(--ink);
+  }
+
+  .cta {
+    margin-top: 24px; background: var(--navy); color: #fff; border-radius: 22px; padding: clamp(24px, 3.5vw, 36px);
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;
+  }
+  .cta-copy { display: flex; flex-direction: column; gap: 6px; max-width: 440px; }
+  .cta-title { font-family: var(--font-display); font-size: 21px; font-weight: 600; line-height: 1.3; }
+  .cta-text { font-size: 15px; line-height: 1.5; color: #C9D1DC; }
+  .cta-btn { padding: 13px 22px; font-size: 15px; }
+
+  .bio {
+    margin-top: 16px; padding-top: 28px; border-top: 1px solid var(--line);
+    display: flex; gap: 18px; align-items: flex-start; font-size: 15px; line-height: 1.55; color: var(--ink2);
+  }
+  .bio img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex: none; }
+  .bio-copy { display: flex; flex-direction: column; gap: 6px; }
+  .bio-name { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); }
+  .bio-copy a { font-weight: 600; }
+
+  .more { background: var(--subtle); border-top: 1px solid var(--line); padding: clamp(56px, 8vw, 96px) 0; }
+  .more-stack { display: flex; flex-direction: column; gap: 32px; }
+  .more-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; }
+  .more-head h2 { font-size: clamp(26px, 3vw, 34px); letter-spacing: -0.025em; }
+  .more-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 24px; }
+</style>

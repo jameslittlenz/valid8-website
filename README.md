@@ -1,25 +1,75 @@
-# CODING AGENTS: READ THIS FIRST
+# Valid8 Advisory website
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+Static site built with [Astro](https://astro.build), implemented from the Claude Design mockups in `project/` (see `DESIGN_HANDOFF.md` and `chats/`).
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+```sh
+npm install
+npm run dev      # http://localhost:4321, drafts visible
+npm run build    # static site in dist/, drafts excluded
+npm run preview  # serve dist/
+npm run check    # type-check
+```
 
-## What you should do — IMPORTANT
+`dist/` is plain HTML/CSS with a few lines of JS (mobile menu, blog filter, copy-link). Host it anywhere static: Netlify, Vercel, Cloudflare Pages, S3, GitHub Pages.
 
-**Read the chat transcripts first.** There are 1 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+## Pages
 
-**Read `project/Site Overview.dc.html` in full.** The user had this file open when they triggered the handoff, so it's almost certainly the primary design they want built. Read it top to bottom — don't skim. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+| URL | File |
+| --- | --- |
+| `/` | `src/pages/index.astro` |
+| `/offerings/` | `src/pages/offerings.astro` |
+| `/use-cases/` | `src/pages/use-cases.astro` |
+| `/about/` | `src/pages/about.astro` |
+| `/blog/` | `src/pages/blog/index.astro` |
+| `/blog/<post>/` | `src/pages/blog/[slug].astro` + `src/content/posts/<post>.md` |
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+Header and footer live in `src/components/`. Colours are CSS variables in `src/styles/global.css`; dark mode follows the visitor's system setting (`prefers-color-scheme`), with no toggle.
 
-## About the design files
+## Adding blog posts and media coverage
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+Every entry on the blog page is one Markdown file in `src/content/posts/`. The file name becomes the URL.
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
+**An article (Insights)** — frontmatter plus the article in Markdown below it:
 
-## Bundle contents
+```md
+---
+title: Preparing for Trust Framework accreditation
+date: 2026-10-20
+author: James Little            # must be a name listed in src/data/site.ts
+category: Insights
+excerpt: Readiness, scoping and evidence: what the Trust Framework Authority expects to see.
+image: /assets/beehive.jpg      # put new images in public/assets/
+imagePosition: center 30%       # optional, CSS object-position
+imageAlt: The Beehive, Wellington
+imageCaption: Optional caption under the hero image.
+---
 
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `Valid8 website mockups` project files (HTML prototypes, assets, components)
+Article text in normal Markdown: ## headings, **bold**, lists, > quotes, [links](https://…).
+```
+
+**Media coverage (In the media)** — no body, just a link out:
+
+```md
+---
+title: 'OK computer: The coming revolution in digital IDs'
+date: 2026-08-29
+author: James Little
+category: In the media
+excerpt: '“A pull quote from the piece.”'
+image: /assets/media-article.jpg
+url: https://www.nzherald.co.nz/…
+outlet: NZ Herald                # shown as “Read on NZ Herald ↗”
+featured: true                   # optional: big card at the top of the blog page
+---
+```
+
+Other options: `draft: true` shows a post in `npm run dev` only. Frontmatter is validated (`src/content.config.ts`), so a typo in a field or an unknown author fails the build instead of shipping a broken page.
+
+To add an author, add them to `authors` in `src/data/site.ts`.
+
+## Open items from the design
+
+- Three Insights posts (`from-federated-identity…`, `preparing-for-trust-framework…`, `iso-18013-5…`) are sample titles from the mockups with no text. They're marked `draft: true`, so they don't appear on the live site until written.
+- The two Chris Goh media items have no link yet. Add `url:` and `outlet:` to make their cards clickable.
+- The DISTF article text was written by the design tool as sample copy and needs James's review.
+- Set `site` in `astro.config.mjs` to the real domain before launch.

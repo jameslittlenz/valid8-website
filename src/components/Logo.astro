@@ -1,0 +1,20 @@
+---
+interface Props {
+  height?: number;
+  /** Always use the white logo, e.g. on navy backgrounds. */
+  onDark?: boolean;
+}
+const { height = 38, onDark = false } = Astro.props;
+---
+{onDark ? (
+  <img src="/assets/valid8-logo-light.png" alt="Valid8 Advisory" style={`height:${height}px`} class="logo" />
+) : (
+  <picture>
+    <source srcset="/assets/valid8-logo-light.png" media="(prefers-color-scheme: dark)" />
+    <img src="/assets/valid8-logo-dark.png" alt="Valid8 Advisory" style={`height:${height}px`} class="logo" />
+  </picture>
+)}
+
+<style>
+  .logo { width: auto; display: block; }
+</style>

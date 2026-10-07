@@ -1,0 +1,42 @@
+---
+import { formatDate, postHref, type Post } from '../lib';
+
+interface Props {
+  post: Post;
+  /** Image, category, date and title only. */
+  compact?: boolean;
+}
+const { post, compact = false } = Astro.props;
+const { data } = post;
+const href = postHref(post);
+const external = Boolean(data.url);
+const Tag = href ? 'a' : 'div';
+---
+<Tag
+  class:list={['card', { compact, linked: href }]}
+  href={href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener' : undefined}
+  data-cat={data.category}
+>
+  <div class="img"><img src={data.image} alt={data.imageAlt} style={`object-position:${data.imagePosition}`} loading="lazy" /></div>
+  <div class="meta"><span class="pill">{data.category}</span><span class="date">{formatDate(data.date)}</span>{data.draft && <span class="draft">Draft</span>}</div>
+  <h3>{data.title}</h3>
+  {!compact && <p class="excerpt">{data.excerpt}</p>}
+  {!compact && <span class="author">{data.author}</span>}
+</Tag>
+
+<style>
+  .card { display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: var(--ink); }
+  .card.compact { gap: 14px; }
+  .card.linked:hover { color: var(--green); }
+  .img { border-radius: 20px; overflow: hidden; aspect-ratio: 16 / 10.5; background: var(--mint); }
+  .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 13px; }
+  .date { color: var(--ink3); }
+  .draft { padding: 2px 8px; border-radius: 6px; border: 1px dashed var(--ink3); color: var(--ink3); font-weight: 600; }
+  h3 { font-size: 21px; line-height: 1.28; letter-spacing: -0.02em; text-wrap: balance; }
+  .compact h3 { font-size: 20px; }
+  .excerpt { font-size: 16px; line-height: 1.55; color: var(--ink2); }
+  .author { font-size: 14px; font-weight: 500; color: var(--ink); }
+</style>

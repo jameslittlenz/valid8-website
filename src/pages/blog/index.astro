@@ -1,0 +1,117 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import { authors } from '../../data/site';
+import { formatDate, getPosts, postHref } from '../../lib';
+
+const posts = await getPosts();
+const featured = posts.find((p) => p.data.featured);
+const rest = posts.filter((p) => p !== featured);
+const filters = ['All', 'In the media', 'Insights'];
+
+const featuredHref = featured && postHref(featured);
+const featuredExternal = Boolean(featured?.data.url);
+const featuredAuthor = featured && authors[featured.data.author];
+---
+<Base title="Blog" active="blog" description="Media commentary and perspectives on digital identity and verifiable credentials from the Valid8 team.">
+  <section class="intro">
+    <div class="wrap intro-row">
+      <div class="intro-copy">
+        <div class="eyebrow">Blog</div>
+        <h1 class="h1">Insights and commentary</h1>
+        <p class="lede">Media commentary and perspectives on digital identity and verifiable credentials from the Valid8 team.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter posts">
+        {filters.map((f, i) => <button type="button" data-filter={f} aria-pressed={i === 0 ? 'true' : 'false'}>{f}</button>)}
+      </div>
+    </div>
+  </section>
+
+  {featured && (
+    <section class="featured-section" data-cat={featured.data.category}>
+      <div class="wrap">
+        <a
+          href={featuredHref}
+          target={featuredExternal ? '_blank' : undefined}
+          rel={featuredExternal ? 'noopener' : undefined}
+          class="featured"
+        >
+          <div class="f-img"><img src={featured.data.image} alt={featured.data.imageAlt} style={`object-position:${featured.data.imagePosition}`} /></div>
+          <div class="f-body">
+            <div class="f-top">
+              <div class="f-meta"><span class="f-pill">{featured.data.category}</span><span class="f-date">{formatDate(featured.data.date)}</span></div>
+              <h2>{featured.data.title}</h2>
+              <p>{featured.data.excerpt}</p>
+            </div>
+            <div class="f-foot">
+              <div class="f-author">
+                {featuredAuthor && <img src={featuredAuthor.photo} alt="" style={`object-position:${featuredAuthor.photoPosition}`} />}
+                <span>{featured.data.author}</span>
+              </div>
+              <span class="f-cta">{featuredExternal ? `Read on ${featured.data.outlet ?? 'the original site'} ↗` : 'Read the article →'}</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+  )}
+
+  <section class="grid-section">
+    <div class="wrap grid">
+      {rest.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+</Base>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const items = document.querySelectorAll<HTMLElement>('.grid > [data-cat], .featured-section');
+  buttons.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const f = btn.dataset.filter;
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      items.forEach((el) => { el.hidden = f !== 'All' && el.dataset.cat !== f; });
+    }),
+  );
+</script>
+
+<style>
+  .intro { padding: clamp(48px, 7vw, 96px) 0 clamp(32px, 4vw, 48px); }
+  .intro-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 32px; }
+  .intro-copy { display: flex; flex-direction: column; gap: 22px; max-width: 720px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+  .filters button {
+    padding: 10px 18px; border-radius: 999px; border: 1.5px solid var(--line2); background: var(--surface);
+    color: var(--ink); font-family: inherit; font-size: 15px; font-weight: 500; cursor: pointer;
+  }
+  .filters button:hover { border-color: var(--ink); }
+  .filters button[aria-pressed='true'] { border-color: var(--btn); background: var(--btn); color: var(--btn-ink); font-weight: 600; }
+
+  .featured-section { padding: 0 0 clamp(40px, 5vw, 64px); }
+  .featured-section[hidden] { display: none; }
+  .featured {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+    background: var(--navy); color: #fff; border-radius: 28px; overflow: hidden; text-decoration: none;
+  }
+  .featured:hover { color: #fff; background: var(--navy-deep); }
+  .f-img { position: relative; min-height: 340px; background: linear-gradient(135deg, #EAF3EE, #9CC9B8); }
+  .f-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .f-body { padding: clamp(28px, 4vw, 52px); display: flex; flex-direction: column; justify-content: space-between; gap: 32px; }
+  .f-top { display: flex; flex-direction: column; gap: 18px; }
+  .f-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 13px; }
+  .f-pill { padding: 5px 10px; border-radius: 999px; background: var(--green-light); color: var(--navy-deep); font-weight: 600; }
+  .f-date { color: #C9D1DC; }
+  .featured h2 { font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -0.03em; text-wrap: balance; }
+  .featured p { font-size: 17px; line-height: 1.6; color: #D5DBE4; }
+  .f-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .f-author { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 500; }
+  .f-author img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+  .f-cta { font-size: 15px; font-weight: 600; color: var(--green-light); }
+
+  .grid-section { padding: 0 0 clamp(72px, 10vw, 120px); }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: clamp(28px, 3vw, 40px) 24px;
+  }
+  .grid > :global([hidden]) { display: none; }
+</style>

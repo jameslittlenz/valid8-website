@@ -1,0 +1,172 @@
+---
+import Base from '../layouts/Base.astro';
+
+const steps = ['Regular workshops, in person and online', 'Whiteboard sessions', 'Draft review and consultation', 'Collective contribution and endorsement'];
+
+const photoCases = [
+  { place: 'Queensland, Australia', title: "Australia's first ISO-standard digital wallet", text: 'Implemented the first ISO-compliant digital wallet in Queensland, which has won a number of national accolades for inclusion, accessibility and customer design.', img: '/assets/wallet-phone.jpg', pos: 'center' },
+  { place: 'Aotearoa New Zealand', title: 'Digital Identity Services Trust Framework', text: 'Led development of the Trust Framework and the regulatory regime under which the first services were accredited.', img: '/assets/beehive.jpg', pos: 'center 30%' },
+  { place: 'European Commission', title: 'EUDI Wallet launch and testing', text: 'Worked with the European Commission to support the launch and testing of their first EUDI Wallet.', img: '/assets/id-phone.jpg', pos: 'center' },
+];
+
+const textCases = [
+  { place: 'Australia', title: 'National harmonisation of verifiable credentials', text: "Co-chaired Australia's National Verifiable Credentials Working Group and helped develop state and national legislation and policy." },
+  { place: 'Europe and United States', title: 'Global verifiable credential assessments', text: 'Assessed ecosystem readiness across Europe and the United States.' },
+  { place: 'Cross-border', title: 'National cross-border VC architecture', text: 'Developed architecture for government, banks, and community services.' },
+  { place: 'Queensland, Australia', title: 'State ICT Maturity Assessment', text: "Delivered Queensland's State ICT Maturity Assessment and hosted four international summits on VC interoperability." },
+];
+---
+<Base title="Use cases" active="use-cases" description="Our work on digital identity, from New Zealand's Trust Framework Reference Architecture to Australia's first ISO-standard digital wallet.">
+  <section class="intro">
+    <div class="wrap intro-stack">
+      <div class="eyebrow">Use cases</div>
+      <h1 class="h1" style="max-width:960px">From national frameworks to the first ISO-standard wallet</h1>
+      <p class="lede" style="max-width:720px">Our understanding of digital identity and verifiable credentials comes from direct involvement in national policy development, ISO-standards implementation, international trust framework design, and cross-jurisdictional interoperability initiatives.</p>
+    </div>
+  </section>
+
+  <section id="reference-architecture" class="ra">
+    <div class="wrap ra-stack">
+      <div class="ra-hero">
+        <img src="/assets/codesign-workshop.jpg" alt="Co-design participants" />
+        <div class="ra-shade"></div>
+        <div class="ra-title">
+          <span class="ra-badge">Featured · Aotearoa New Zealand</span>
+          <h2>Trust Framework Reference Architecture</h2>
+        </div>
+      </div>
+
+      <div class="ra-body">
+        <div class="ra-text">
+          <p class="ra-lead">Commissioned by the Government Digital Delivery Agency (then the Department of Internal Affairs), Valid8 Advisory led the co-design, drafting and consultation of the Digital Identity Services Trust Framework Reference Architecture, a practical blueprint for putting the Digital Identity Services Trust Framework Act 2023 into operation.</p>
+          <p>The co-design process involved over 40 organisations across the public and private sectors through regular workshops held in person and online, whiteboard sessions, draft review and consultation, and collective contribution and endorsement.</p>
+          <p>The publicly available document defines the roles, trust model, assurance levels, data model and standards needed to issue, hold and present digital identity credentials securely, with accessibility, inclusion and privacy built in. It aligns with international standards and practice (ISO, W3C, IETF, OpenID and the EU) to support cross-border interoperability.</p>
+          <p>The reference architecture comprises nine chapters, annexes and supporting implementation guidance. It is the common reference point for everyone building digital identity services in Aotearoa New Zealand.</p>
+          <a href="https://github.com/nz-trust-framework/DISTF-reference-architecture" class="btn btn-primary gh">View on GitHub <span>↗</span></a>
+        </div>
+        <aside class="facts">
+          <div class="fact">
+            <span class="fact-label">Client</span>
+            <span>Government Digital Delivery Agency (then the Department of Internal Affairs)</span>
+          </div>
+          <div class="fact">
+            <span class="fact-label">Our role</span>
+            <span>Co-design, drafting and consultation</span>
+          </div>
+          <div class="fact fact-stats">
+            <div><span class="num">40+</span><span class="num-label">organisations</span></div>
+            <div><span class="num">9</span><span class="num-label">chapters</span></div>
+          </div>
+          <div class="fact fact-last">
+            <span class="fact-label">Aligned with</span>
+            <div class="tags">
+              {['ISO', 'W3C', 'IETF', 'OpenID', 'EU'].map((t) => <span>{t}</span>)}
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="how">
+        <h3>How the co-design worked</h3>
+        <div class="how-grid">
+          {steps.map((s, i) => (
+            <div class:list={['how-step', { last: i === steps.length - 1 }]}>
+              <span class="how-n">{String(i + 1).padStart(2, '0')}</span>
+              <span class="how-text">{s}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="more">
+    <div class="wrap more-stack">
+      <div class="more-head">
+        <div class="eyebrow">More of our work</div>
+        <h2 class="h2">Across Aotearoa, Australia, Europe and beyond</h2>
+      </div>
+      <div class="cards-photo">
+        {photoCases.map((c) => (
+          <article class="card">
+            <div class="card-img"><img src={c.img} alt="" style={`object-position:${c.pos}`} /></div>
+            <div class="card-body">
+              <span class="card-place">{c.place}</span>
+              <h3 class="card-title">{c.title}</h3>
+              <p class="card-text">{c.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="cards-text">
+        {textCases.map((c) => (
+          <article class="card card-body">
+            <span class="card-place">{c.place}</span>
+            <h3 class="card-title sm">{c.title}</h3>
+            <p class="card-text sm">{c.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .intro { padding: clamp(48px, 7vw, 96px) 0 clamp(40px, 5vw, 64px); }
+  .intro-stack { display: flex; flex-direction: column; gap: 24px; }
+
+  .ra { padding: 0 0 clamp(72px, 10vw, 120px); }
+  .ra-stack { display: flex; flex-direction: column; gap: clamp(32px, 5vw, 56px); }
+  .ra-hero {
+    position: relative; border-radius: 28px; overflow: hidden; background: var(--navy);
+    min-height: clamp(380px, 48vw, 560px); display: flex; align-items: flex-end;
+  }
+  .ra-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+  .ra-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(28, 51, 78, 0.05) 25%, rgba(28, 51, 78, 0.88) 100%); }
+  .ra-title { position: relative; padding: clamp(24px, 4vw, 48px); display: flex; flex-direction: column; gap: 14px; color: #fff; max-width: 760px; }
+  .ra-badge {
+    align-self: flex-start; padding: 6px 12px; border-radius: 999px; background: var(--green-light); color: var(--navy-deep);
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .ra-title h2 { font-size: clamp(30px, 4.4vw, 52px); line-height: 1.06; letter-spacing: -0.03em; text-wrap: balance; }
+
+  .ra-body { display: flex; flex-wrap: wrap; gap: clamp(32px, 5vw, 64px); align-items: flex-start; }
+  .ra-text { flex: 2 1 520px; display: flex; flex-direction: column; gap: 22px; font-size: 18px; line-height: 1.65; color: var(--ink2); }
+  .ra-lead { font-size: clamp(20px, 2vw, 23px); line-height: 1.5; color: var(--ink); font-weight: 500; }
+  .gh { align-self: flex-start; margin-top: 8px; padding: 14px 24px; }
+  .facts { flex: 1 1 300px; position: sticky; top: 100px; background: var(--mint); border-radius: 22px; padding: 28px; display: flex; flex-direction: column; }
+  .fact { display: flex; flex-direction: column; gap: 4px; padding: 18px 0; border-bottom: 1px solid var(--line3); font-size: 16px; line-height: 1.45; }
+  .fact:first-child { padding-top: 0; }
+  .fact-last { gap: 10px; padding-bottom: 0; border-bottom: 0; }
+  .fact-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); }
+  .fact-stats { flex-direction: row; gap: 24px; }
+  .fact-stats > div { display: flex; flex-direction: column; gap: 2px; }
+  .num { font-family: var(--font-display); font-size: 34px; font-weight: 600; letter-spacing: -0.03em; color: var(--green); }
+  .num-label { font-size: 14px; color: var(--ink2); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tags span { padding: 5px 10px; border-radius: 7px; background: var(--surface); font-size: 13px; font-weight: 500; }
+
+  .how { display: flex; flex-direction: column; gap: 20px; }
+  .how h3 { font-size: 22px; letter-spacing: -0.02em; }
+  .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px; }
+  .how-step { border: 1px solid var(--line2); border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 12px; }
+  .how-step.last { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .how-n { font-family: var(--font-display); font-size: 13px; font-weight: 600; color: var(--green); }
+  .how-step.last .how-n { color: var(--green-light); }
+  .how-text { font-size: 17px; font-weight: 500; line-height: 1.4; }
+
+  .more { background: var(--subtle); border-top: 1px solid var(--line); padding: clamp(72px, 10vw, 120px) 0; }
+  .more-stack { display: flex; flex-direction: column; gap: clamp(32px, 4vw, 48px); }
+  .more-head { display: flex; flex-direction: column; gap: 16px; max-width: 680px; }
+  .cards-photo { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px; }
+  .cards-text { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 20px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; }
+  .card-img { aspect-ratio: 16 / 11; background: var(--mint); }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+  .card-place { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); }
+  .card-title { font-size: 21px; line-height: 1.25; letter-spacing: -0.02em; }
+  .card-title.sm { font-size: 19px; line-height: 1.3; letter-spacing: -0.01em; }
+  .card-text { font-size: 16px; line-height: 1.55; color: var(--ink2); }
+  .card-text.sm { font-size: 15px; }
+</style>

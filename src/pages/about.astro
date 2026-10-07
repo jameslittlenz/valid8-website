@@ -1,0 +1,175 @@
+---
+import Base from '../layouts/Base.astro';
+
+const capabilities = [
+  ['Government advisory experience', "Over seven years advising and leading governments on digital identity, including co-chairing Australia's National Verifiable Credentials Working Group, leading New Zealand’s Digital Identity Services Trust Framework, and advising across Europe and Asia."],
+  ['Digital identity and infrastructure expertise', "International expert in digital identity and VCs since 2018, led Australia's first ISO-standards digital wallet rollout, and the implementation of New Zealand’s Digital Identity Services Trust Framework."],
+  ['Multi-country and regional management', 'Conducted global VC assessments across Europe and the United States and led national initiatives across jurisdictions.'],
+  ['Multidisciplinary policy research', "Delivered Queensland's State ICT Maturity Assessment and hosted four international summits coordinating multi-stakeholder consultations on VC interoperability."],
+  ['Political economy understanding', 'Developed national cross-border VC architecture for government, banks, and community services, navigating complex institutional stakeholder environments.'],
+  ['Analytical and communication capacity', 'Synthesised complex findings into whole-of-government investment strategies and national digital identity adoption priorities for stakeholders.'],
+  ['Multilingual operational capacity', 'International engagement across Europe demonstrates cross-cultural coordination capability.'],
+];
+
+const people = [
+  {
+    name: 'Chris Goh',
+    role: 'Valid8 Founder and Director',
+    photo: '/assets/chris-goh-speaking.jpg',
+    pos: '60% 30%',
+    tags: ['Public servant for 30 years, now founder', 'Legislative, architectural, CX specialist'],
+    bio: 'Chris is an experienced executive and digital identity specialist with more than a decade of senior executive engagement across government, industry and regional bodies on digital transformation and cross-border digital policy and legislation.',
+    points: [
+      'Standards expert in verifiable credentials (VCs)',
+      'Established national harmonisation of VCs in Australia',
+      'Recently worked with the European Commission to support their first EUDI Wallet launch and testing',
+      'Supporting New Zealand in the cross-industry co-design of their identity and VC architecture',
+      'Implemented the first ISO-compliant digital wallet in Queensland, which has won a number of national accolades for inclusion, accessibility and customer design',
+      'Co-chaired national working groups on VCs and assisted in developing state and national legislation and policy on the use and adoption of verifiable credentials',
+    ],
+  },
+  {
+    name: 'James Little',
+    role: 'New Zealand Lead',
+    photo: '/assets/james-little.jpg',
+    pos: '50% 30%',
+    tags: ['Senior government adviser for a decade', 'Policy, legislative, regulatory specialist'],
+    bio: 'James has spent a decade advising at the most senior levels of the New Zealand Government on digital government and digital identity. He excels where clear direction is needed between competing policy, political and technical realities.',
+    points: [
+      'Advised former PM and senior ministers on digital policy for six years',
+      'Led development of the Digital Identity Services Trust Framework and the regulatory regime under which the first services were accredited',
+      'Key role building New Zealand’s digital identity infrastructure and modernising regulation across government',
+      'Engages governments and speaks at conferences across Asia and Australia',
+      'Deep grasp of digital strategy, policy and legislative design, and of verifiable credentials technology and standards',
+      'Contributing author on the DISTF Reference Architecture, with deep knowledge of ISO 18013-5/23220 standards and implementation',
+    ],
+  },
+];
+---
+<Base title="About" active="about" description="Valid8 Advisory is a specialised digital identity advisory firm. Meet Chris Goh, James Little and the wider team.">
+  <section class="hero">
+    <div class="arc" aria-hidden="true"></div>
+    <div class="wrap hero-stack">
+      <div class="hero-head">
+        <div class="eyebrow">About Valid8</div>
+        <h1 class="hero-title">Many advisors stop at strategy. Our point of difference is execution.</h1>
+      </div>
+      <div class="hero-cols">
+        <p class="hero-lead">We are a specialised advisory firm focused on enabling organisations and public services to deliver meaningful digital service and economic reform.</p>
+        <p class="body">We partner with clients to implement customer-led approaches that deliver real outcomes across diverse stakeholder environments, whether navigating complex regulatory constraints or operating without established legislative frameworks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="know">
+    <div class="wrap know-grid">
+      <div class="know-photo"><img src="/assets/servers.jpg" alt="" /></div>
+      <div class="know-copy">
+        <h2 class="h2-sm">We know the complexities of digital identity and verifiable credentials</h2>
+        <p class="body">Our deep understanding of Digital Identity and Verifiable Credentials stems from direct involvement in national policy development, ISO-standards implementation, international trust framework design, and cross-jurisdictional interoperability initiatives. We have navigated the technical, regulatory, and stakeholder coordination challenges that define successful digital identity adoption.</p>
+        <p class="body">This includes leading Australia's first digital wallet rollout to assessing ecosystem readiness across Europe and the United States. This practical experience equips us to evaluate the diverse maturity levels and institutional contexts across jurisdictions, allowing us to tailor solutions and strategies while enabling international interoperability.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="caps">
+    <div class="wrap caps-stack">
+      <div class="caps-head">
+        <div class="eyebrow">Core capabilities</div>
+        <h2 class="h2">What we bring</h2>
+      </div>
+      <div class="caps-grid">
+        {capabilities.map(([title, text]) => (
+          <div class="cap"><h3>{title}</h3><p>{text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="team" class="team">
+    <div class="wrap team-stack">
+      <div class="caps-head">
+        <div class="eyebrow">Our team</div>
+        <h2 class="h2">Senior team with a local base</h2>
+      </div>
+      {people.map((p) => (
+        <div class="person">
+          <div class="person-photo"><img src={p.photo} alt={p.name} style={`object-position:${p.pos}`} /></div>
+          <div class="person-copy">
+            <div class="person-head">
+              <h3>{p.name}</h3>
+              <span class="person-role">{p.role}</span>
+            </div>
+            <div class="person-tags">{p.tags.map((t) => <span>{t}</span>)}</div>
+            <p class="body">{p.bio}</p>
+            <ul class="points">{p.points.map((pt) => <li>{pt}</li>)}</ul>
+          </div>
+        </div>
+      ))}
+      <div class="wider">
+        <p>Chris and James are supported by a wider team based across New Zealand and Australia.</p>
+        <div class="places">
+          {['Auckland', 'Wellington', 'Australia'].map((pl) => <span>{pl}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { position: relative; overflow: hidden; padding: clamp(56px, 8vw, 112px) 0 clamp(56px, 8vw, 96px); }
+  .arc {
+    position: absolute; right: -6%; top: -12%; width: min(620px, 60%); aspect-ratio: 1; background: var(--green-bright);
+    -webkit-mask: url(/assets/lines-arc.png) no-repeat center / contain; mask: url(/assets/lines-arc.png) no-repeat center / contain;
+    opacity: 0.35; pointer-events: none;
+  }
+  .hero-stack { position: relative; display: flex; flex-direction: column; gap: clamp(32px, 4vw, 48px); }
+  .hero-head { display: flex; flex-direction: column; gap: 24px; max-width: 900px; }
+  .hero-title { font-size: clamp(40px, 6vw, 76px); line-height: 1.02; letter-spacing: -0.04em; text-wrap: balance; }
+  .hero-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: clamp(24px, 4vw, 56px); }
+  .hero-lead { font-size: clamp(19px, 1.8vw, 22px); line-height: 1.55; color: var(--ink); font-weight: 500; }
+
+  .know { padding: 0 0 clamp(72px, 10vw, 120px); }
+  .know-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: clamp(32px, 5vw, 64px); align-items: center; }
+  .know-photo { border-radius: 26px; overflow: hidden; aspect-ratio: 1 / 0.95; background: var(--navy); }
+  .know-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .know-copy { display: flex; flex-direction: column; gap: 20px; }
+
+  .caps { background: var(--mint); padding: clamp(72px, 10vw, 120px) 0; }
+  .caps-stack { display: flex; flex-direction: column; gap: clamp(32px, 4vw, 48px); }
+  .caps-head { display: flex; flex-direction: column; gap: 16px; }
+  .caps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 14px; }
+  .cap { background: var(--surface); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px; }
+  .cap h3 { font-size: 18px; letter-spacing: -0.01em; }
+  .cap p { font-size: 15.5px; line-height: 1.55; color: var(--ink2); }
+
+  .team { scroll-margin-top: 80px; padding: clamp(72px, 10vw, 120px) 0; }
+  .team-stack { display: flex; flex-direction: column; gap: clamp(48px, 7vw, 88px); }
+  .person { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(28px, 5vw, 64px); align-items: start; }
+  .person-photo { border-radius: 24px; overflow: hidden; aspect-ratio: 4 / 4.6; background: var(--mint); }
+  .person-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .person-copy { display: flex; flex-direction: column; gap: 20px; }
+  .person-head { display: flex; flex-direction: column; gap: 6px; }
+  .person-head h3 { font-size: clamp(28px, 3vw, 36px); letter-spacing: -0.03em; }
+  .person-role { font-size: 17px; font-weight: 500; color: var(--green); }
+  .person-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .person-tags span { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line2); font-size: 13.5px; }
+  .points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+  .points li { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15.5px; line-height: 1.5; }
+  .points li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green-bright); flex: none; margin-top: 9px; }
+
+  .wider {
+    background: var(--navy); color: #fff; border-radius: 24px; padding: clamp(28px, 4vw, 44px);
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px;
+  }
+  .wider p {
+    font-family: var(--font-display); font-size: clamp(20px, 2.2vw, 26px); font-weight: 500;
+    line-height: 1.35; letter-spacing: -0.015em; max-width: 560px; text-wrap: balance;
+  }
+  .places { display: flex; flex-wrap: wrap; gap: 8px; }
+  .places span {
+    display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.16); font-size: 15px;
+  }
+  .places span::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--green-light); }
+</style>

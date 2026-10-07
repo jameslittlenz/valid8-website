@@ -1,0 +1,325 @@
+---
+import Base from '../layouts/Base.astro';
+
+const standards = ['ISO/IEC 18013-5', 'ISO/IEC 23220', 'OID4VCI', 'OID4VP', 'W3C Digital Credentials API', 'DISTF Act 2023'];
+
+const reasons = [
+  ['Trusted advisors to government', 'We understand how decisions get made, what ministers and boards need to see, and how to build the authorising environment that lets significant change happen.'],
+  ['Deep understanding of digital identity', 'We understand decentralised digital identity, verifiable credentials and digital wallets, and participate in the international standards that underpin them.'],
+  ['From legacy to verifiable credentials', 'Moving from centralised and federated identity models to verifiable credentials is as much an organisational shift as a technical one.'],
+  ['From start to finish', 'A single advisory partner who understands how early decisions play out in delivery, and who stays involved to make sure benefits are realised.'],
+  ['Frameworks, accreditations, guardrails', 'For over a decade we have advised on national identity and accreditation frameworks that provide guardrails for trust and interoperability.'],
+  ['Global experience, local base', 'Key personnel in Auckland and Wellington, supported by our team in Australia, combining global perspective with first-hand knowledge of New Zealand.'],
+];
+
+const stages = [
+  ['Introduction, Assessment, Workshops, and Demos', 'Use cases, a technical demonstration and a clear scoping report.'],
+  ['Planning and Governance', 'Business cases that stand up to boards, ministers and investment panels.'],
+  ['Design and Experience', 'Customer-centred design and standards-aligned architecture.'],
+  ['Partner, Procure, Operate', 'Market scans, tenders, negotiation and service management.'],
+  ['Assure, Launch, and Improve', 'Testing, security readiness, launch and benefits realisation.'],
+];
+
+const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-computer-the-coming-revolution-in-digital-ids/premium/7VN7DXXKFRE7TKEJGASUPSKN2M/';
+---
+<Base title="Home" active="home">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Digital identity advisory · Aotearoa New Zealand</div>
+        <h1 class="hero-title">Trusted advisers to government on digital identity</h1>
+        <p class="lede hero-lede">A decade at the heart of government on digital identity, from policy and legislation to ministerial advice and delivery.</p>
+        <div class="hero-ctas">
+          <a href="/offerings/" class="btn btn-green">Explore our services <span>→</span></a>
+          <a href="#contact" class="btn btn-outline">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="hero-photo">
+          <img src="/assets/beehive.jpg" alt="The Beehive, Wellington" />
+          <div class="hero-shade"></div>
+        </div>
+        <div class="arc" aria-hidden="true"></div>
+        <div class="stat-card">
+          <div class="stat-num">40+</div>
+          <div class="stat-text">public and private organisations co-designed the DISTF Reference Architecture with us</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="standards">
+    <div class="wrap standards-row">
+      <span class="standards-label">Built on international standards</span>
+      <div class="standards-list">
+        {standards.map((s) => <span class="std-chip">{s}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap stack">
+      <div class="section-head">
+        <div style="max-width:640px">
+          <div class="eyebrow">Why Valid8</div>
+          <h2 class="h2">Strategy is the start. Our point of difference is execution.</h2>
+        </div>
+      </div>
+      <div class="reasons">
+        {reasons.map(([title, text], i) => (
+          <div class="reason">
+            <span class="reason-n">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="block offerings">
+    <div class="wrap stack">
+      <div class="section-head">
+        <div style="max-width:680px">
+          <div class="eyebrow">Offerings</div>
+          <h2 class="h2">Support across the full lifecycle</h2>
+          <p class="section-lede">Five service stages, from workshops and governance through design, procurement, launch and continuous improvement.</p>
+        </div>
+        <a href="/offerings/" class="link-arrow">All offerings <span>→</span></a>
+      </div>
+      <div class="stages">
+        {stages.map(([title, text], i) => (
+          <a href={`/offerings/#s${i + 1}`} class="stage">
+            <div class="stage-top"><span class="stage-n">{i + 1}</span><span class="stage-rule"></span></div>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </a>
+        ))}
+      </div>
+      <a href="/offerings/#s6" class="accred">
+        <div class="accred-main">
+          <span class="accred-n">6</span>
+          <div class="accred-text">
+            <span class="accred-title">Trust Framework Accreditation</span>
+            <span class="accred-sub">From readiness assessment through independent evaluation to a regulator decision.</span>
+          </div>
+        </div>
+        <span class="accred-more">Learn more →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="block feature">
+    <img src="/assets/lines-arc.png" alt="" class="feature-lines" />
+    <div class="wrap feature-grid">
+      <div class="feature-photo">
+        <img src="/assets/codesign-workshop.jpg" alt="Reference Architecture co-design workshop" />
+      </div>
+      <div class="feature-copy">
+        <div class="eyebrow on-dark">Use case</div>
+        <h2 class="h2">Trust Framework Reference Architecture</h2>
+        <p class="feature-text">We led the co-design of the DISTF Reference Architecture with over 40 public and private sector organisations. It is the common reference point for everyone building digital identity services in Aotearoa New Zealand.</p>
+        <div class="feature-stats">
+          <div><span class="fs-num">40+</span><span class="fs-label">organisations</span></div>
+          <div><span class="fs-num">9</span><span class="fs-label">chapters, plus annexes</span></div>
+        </div>
+        <div class="feature-foot">
+          <a href="/use-cases/" class="btn btn-light">Read the use case <span>→</span></a>
+          <div class="commissioned">
+            <span>Commissioned by</span>
+            <img src="/assets/gdda-logo-white.png" alt="Government Digital Delivery Agency" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap stack">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">In the media</div>
+          <h2 class="h2">Recent commentary</h2>
+        </div>
+        <a href="/blog/" class="link-arrow">Visit the blog <span>→</span></a>
+      </div>
+      <div class="quotes">
+        <figure class="quote-main">
+          <span class="quote-mark" aria-hidden="true">“</span>
+          <blockquote>Your legislation and regulations are designed for inclusion, and that co-design process I was part of… you really have to lift your hat to the New Zealand Government for bringing in industry and the community.</blockquote>
+          <figcaption><span class="q-name">Chris Goh</span><span class="q-src">Nine to Noon, 9 September 2026</span></figcaption>
+        </figure>
+        <div class="quote-side">
+          <figure class="quote-small">
+            <blockquote>“When I say, would it be useful if you had your driver’s licence or your passport on your phone, [people] say, ‘Sign me up immediately’.”</blockquote>
+            <figcaption><span class="q-name">James Little</span><a href={okComputer} target="_blank" rel="noopener" class="q-link">OK computer: The coming revolution in digital IDs ↗</a></figcaption>
+          </figure>
+          <figure class="quote-small">
+            <blockquote>“The cryptography is actually much stronger than your credit card in some ways as well.”</blockquote>
+            <figcaption><span class="q-name">Chris Goh</span><span class="q-src">Digital driver’s licences: Will hackers and government be able to track you?</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team">
+    <div class="wrap team-grid">
+      <div class="team-intro">
+        <div class="eyebrow">Our team</div>
+        <h2 class="h2">Senior team with a local base</h2>
+        <p class="section-lede">Led by Chris Goh and James Little, with people in Auckland and Wellington and a wider team in Australia.</p>
+        <a href="/about/" class="link-arrow team-link">About Valid8 <span>→</span></a>
+      </div>
+      <a href="/about/#team" class="person">
+        <div class="person-photo"><img src="/assets/chris-goh-speaking.jpg" alt="Chris Goh" style="object-position:60% 30%" /></div>
+        <div class="person-meta"><span class="person-name">Chris Goh</span><span class="person-role">Founder and Director</span></div>
+      </a>
+      <a href="/about/#team" class="person">
+        <div class="person-photo"><img src="/assets/james-little.jpg" alt="James Little" style="object-position:50% 30%" /></div>
+        <div class="person-meta"><span class="person-name">James Little</span><span class="person-role">New Zealand Lead</span></div>
+      </a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding: clamp(48px, 7vw, 96px) 0 clamp(56px, 8vw, 104px); overflow: hidden; }
+  .hero-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+    gap: clamp(40px, 6vw, 72px); align-items: center;
+  }
+  .hero-copy { display: flex; flex-direction: column; gap: 28px; }
+  .hero-title { font-size: clamp(40px, 5.6vw, 68px); line-height: 1.04; letter-spacing: -0.035em; text-wrap: balance; }
+  .hero-lede { max-width: 540px; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; padding-top: 4px; }
+  .hero-media { position: relative; }
+  .hero-photo { position: relative; border-radius: 28px; overflow: hidden; aspect-ratio: 1 / 1.08; background: var(--mint); }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+  .hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(44, 51, 69, 0) 55%, rgba(44, 51, 69, 0.55) 100%); }
+  .arc {
+    position: absolute; right: -12%; top: -10%; width: 62%; aspect-ratio: 1; background: var(--green-bright);
+    -webkit-mask: url(/assets/lines-arc.png) no-repeat center / contain; mask: url(/assets/lines-arc.png) no-repeat center / contain;
+    opacity: 0.55; pointer-events: none;
+  }
+  .stat-card {
+    position: absolute; left: 20px; right: 20px; bottom: 20px; max-width: 340px;
+    background: var(--surface); border-radius: 18px; padding: 20px 22px;
+    display: flex; gap: 16px; align-items: center; box-shadow: 0 12px 32px rgba(28, 51, 78, 0.18);
+  }
+  .stat-num { font-family: var(--font-display); font-size: 40px; font-weight: 600; letter-spacing: -0.03em; color: var(--green); line-height: 1; }
+  .stat-text { font-size: 14px; line-height: 1.45; color: var(--ink2); }
+
+  .standards { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--subtle); }
+  .standards-row { padding-top: 24px; padding-bottom: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
+  .standards-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); }
+  .standards-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .standards-list .std-chip { background: var(--surface); }
+
+  .block { padding: clamp(72px, 10vw, 128px) 0; }
+  .stack { display: flex; flex-direction: column; gap: clamp(40px, 5vw, 64px); }
+  .section-lede { font-size: 18px; line-height: 1.55; color: var(--ink2); }
+
+  .reasons {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 20px; overflow: hidden;
+  }
+  .reason { background: var(--surface); padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+  .reason-n { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--green); }
+  .reason h3 { font-size: 21px; letter-spacing: -0.02em; }
+  .reason p { font-size: 16px; line-height: 1.6; color: var(--ink2); }
+
+  .offerings { background: var(--mint); }
+  .offerings .stack { gap: clamp(36px, 5vw, 56px); }
+  .stages { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px; }
+  .stage {
+    background: var(--surface); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 14px;
+    text-decoration: none; color: var(--ink); min-height: 240px; border: 1px solid transparent;
+  }
+  .stage:hover { border-color: var(--green-bright); color: var(--ink); }
+  .stage-top { display: flex; align-items: center; gap: 10px; }
+  .stage-n {
+    width: 32px; height: 32px; border-radius: 50%; background: var(--btn); color: var(--btn-ink);
+    display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 14px; font-weight: 600;
+  }
+  .stage-rule { flex: 1; height: 1px; background: var(--line2); }
+  .stage h3 { font-size: 18px; line-height: 1.25; letter-spacing: -0.01em; }
+  .stage p { font-size: 15px; line-height: 1.55; color: var(--ink2); }
+  .accred {
+    background: var(--navy); border-radius: 18px; padding: clamp(24px, 3vw, 32px);
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;
+    text-decoration: none; color: #fff;
+  }
+  .accred:hover { background: var(--navy-deep); color: #fff; }
+  .accred-main { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .accred-n {
+    width: 40px; height: 40px; border-radius: 50%; background: var(--green-light); color: var(--navy-deep);
+    display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 16px; font-weight: 600; flex: none;
+  }
+  .accred-text { display: flex; flex-direction: column; gap: 4px; }
+  .accred-title { font-family: var(--font-display); font-size: clamp(19px, 2vw, 22px); font-weight: 600; }
+  .accred-sub { font-size: 15px; color: #C9D1DC; }
+  .accred-more { font-size: 15px; font-weight: 600; color: var(--green-light); }
+
+  .feature { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+  .feature-lines { position: absolute; left: -10%; bottom: -30%; width: min(700px, 70%); opacity: 0.12; pointer-events: none; }
+  .feature-grid {
+    position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
+    gap: clamp(40px, 6vw, 72px); align-items: center;
+  }
+  .feature-photo { border-radius: 24px; overflow: hidden; aspect-ratio: 4 / 3.4; background: var(--navy-deep); }
+  .feature-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .feature-copy { display: flex; flex-direction: column; gap: 24px; }
+  .feature-text { font-size: 18px; line-height: 1.6; color: #D5DBE4; }
+  .feature-stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1px;
+    background: rgba(255, 255, 255, 0.14); border-radius: 14px; overflow: hidden;
+  }
+  .feature-stats > div { background: var(--navy); padding: 18px 4px 18px 0; display: flex; flex-direction: column; gap: 4px; }
+  .feature-stats > div + div { padding-left: 20px; }
+  .fs-num { font-family: var(--font-display); font-size: 32px; font-weight: 600; color: var(--green-light); letter-spacing: -0.02em; }
+  .fs-label { font-size: 14px; color: #C9D1DC; }
+  .feature-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding-top: 4px; }
+  .feature-foot .btn { padding: 14px 24px; }
+  .commissioned { display: flex; align-items: center; gap: 12px; }
+  .commissioned span { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #8E98A9; }
+  .commissioned img { height: 36px; width: auto; }
+
+  .quotes { display: flex; flex-wrap: wrap; gap: 16px; }
+  .quotes figure { margin: 0; }
+  .quote-main {
+    flex: 2 1 480px; background: var(--mint); border-radius: 24px; padding: clamp(28px, 4vw, 48px);
+    display: flex; flex-direction: column; justify-content: space-between; gap: 32px;
+  }
+  .quote-mark { font-family: var(--font-display); font-size: 72px; line-height: 0.6; color: var(--green-bright); height: 36px; }
+  .quote-main blockquote {
+    margin: 0; font-family: var(--font-display); font-size: clamp(20px, 2.3vw, 27px); font-weight: 500;
+    line-height: 1.4; letter-spacing: -0.015em; text-wrap: pretty;
+  }
+  .quote-side { flex: 1 1 320px; display: flex; flex-direction: column; gap: 16px; }
+  .quote-small {
+    flex: 1; border: 1px solid var(--line2); border-radius: 24px; padding: 28px;
+    display: flex; flex-direction: column; justify-content: space-between; gap: 20px;
+  }
+  .quote-small blockquote { margin: 0; font-size: 18px; line-height: 1.5; font-weight: 500; }
+  figcaption { display: flex; flex-direction: column; gap: 2px; }
+  .q-name { font-weight: 600; font-size: 16px; }
+  .quote-small .q-name { font-size: 15px; }
+  .q-src { font-size: 14px; color: var(--ink2); }
+  .q-link { font-size: 14px; color: var(--green); }
+
+  .team { padding: 0 0 clamp(72px, 10vw, 128px); }
+  .team-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: clamp(24px, 4vw, 48px); align-items: start;
+  }
+  .team-intro { display: flex; flex-direction: column; gap: 18px; padding-top: 8px; }
+  .team-link { align-self: flex-start; margin-top: 8px; }
+  .person { display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: var(--ink); }
+  .person:hover { color: var(--ink); }
+  .person-photo { border-radius: 20px; overflow: hidden; aspect-ratio: 4 / 4.4; background: var(--mint); }
+  .person-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .person-meta { display: flex; flex-direction: column; gap: 4px; }
+  .person-name { font-family: var(--font-display); font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+  .person-role { font-size: 15px; color: var(--ink2); }
+</style>
