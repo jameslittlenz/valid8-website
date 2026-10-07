@@ -1,4 +1,5 @@
 ---
+import { u } from '../url';
 import Base from '../layouts/Base.astro';
 
 const capabilities = [
@@ -48,7 +49,7 @@ const people = [
 ---
 <Base title="About" active="about" description="Valid8 Advisory is a specialised digital identity advisory firm. Meet Chris Goh, James Little and the wider team.">
   <section class="hero">
-    <div class="arc" aria-hidden="true"></div>
+    <div class="arc" aria-hidden="true" style={`--arc-img:url(${u("/assets/lines-arc.png")})`}></div>
     <div class="wrap hero-stack">
       <div class="hero-head">
         <div class="eyebrow">About Valid8</div>
@@ -63,7 +64,7 @@ const people = [
 
   <section class="know">
     <div class="wrap know-grid">
-      <div class="know-photo"><img src="/assets/servers.jpg" alt="" /></div>
+      <div class="know-photo"><img src={u("/assets/servers.jpg")} alt="" /></div>
       <div class="know-copy">
         <h2 class="h2-sm">We know the complexities of digital identity and verifiable credentials</h2>
         <p class="body">Our deep understanding of Digital Identity and Verifiable Credentials stems from direct involvement in national policy development, ISO-standards implementation, international trust framework design, and cross-jurisdictional interoperability initiatives. We have navigated the technical, regulatory, and stakeholder coordination challenges that define successful digital identity adoption.</p>
@@ -94,7 +95,7 @@ const people = [
       </div>
       {people.map((p) => (
         <div class="person">
-          <div class="person-photo"><img src={p.photo} alt={p.name} style={`object-position:${p.pos}`} /></div>
+          <div class="person-photo"><img src={u(p.photo)} alt={p.name} style={`object-position:${p.pos}`} /></div>
           <div class="person-copy">
             <div class="person-head">
               <h3>{p.name}</h3>
@@ -120,7 +121,7 @@ const people = [
   .hero { position: relative; overflow: hidden; padding: clamp(56px, 8vw, 112px) 0 clamp(56px, 8vw, 96px); }
   .arc {
     position: absolute; right: -6%; top: -12%; width: min(620px, 60%); aspect-ratio: 1; background: var(--green-bright);
-    -webkit-mask: url(/assets/lines-arc.png) no-repeat center / contain; mask: url(/assets/lines-arc.png) no-repeat center / contain;
+    -webkit-mask: var(--arc-img) no-repeat center / contain; mask: var(--arc-img) no-repeat center / contain;
     opacity: 0.35; pointer-events: none;
   }
   .hero-stack { position: relative; display: flex; flex-direction: column; gap: clamp(32px, 4vw, 48px); }

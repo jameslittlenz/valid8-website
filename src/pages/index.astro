@@ -1,4 +1,5 @@
 ---
+import { u } from '../url';
 import Base from '../layouts/Base.astro';
 
 const standards = ['ISO/IEC 18013-5', 'ISO/IEC 23220', 'OID4VCI', 'OID4VP', 'W3C Digital Credentials API', 'DISTF Act 2023'];
@@ -30,16 +31,16 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
         <h1 class="hero-title">Trusted advisers to government on digital identity</h1>
         <p class="lede hero-lede">A decade at the heart of government on digital identity, from policy and legislation to ministerial advice and delivery.</p>
         <div class="hero-ctas">
-          <a href="/offerings/" class="btn btn-green">Explore our services <span>→</span></a>
+          <a href={u("/offerings/")} class="btn btn-green">Explore our services <span>→</span></a>
           <a href="#contact" class="btn btn-outline">Get in touch</a>
         </div>
       </div>
       <div class="hero-media">
         <div class="hero-photo">
-          <img src="/assets/beehive.jpg" alt="The Beehive, Wellington" />
+          <img src={u("/assets/beehive.jpg")} alt="The Beehive, Wellington" />
           <div class="hero-shade"></div>
         </div>
-        <div class="arc" aria-hidden="true"></div>
+        <div class="arc" aria-hidden="true" style={`--arc-img:url(${u("/assets/lines-arc.png")})`}></div>
         <div class="stat-card">
           <div class="stat-num">40+</div>
           <div class="stat-text">public and private organisations co-designed the DISTF Reference Architecture with us</div>
@@ -85,18 +86,18 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
           <h2 class="h2">Support across the full lifecycle</h2>
           <p class="section-lede">Five service stages, from workshops and governance through design, procurement, launch and continuous improvement.</p>
         </div>
-        <a href="/offerings/" class="link-arrow">All offerings <span>→</span></a>
+        <a href={u("/offerings/")} class="link-arrow">All offerings <span>→</span></a>
       </div>
       <div class="stages">
         {stages.map(([title, text], i) => (
-          <a href={`/offerings/#s${i + 1}`} class="stage">
+          <a href={u(`/offerings/#s${i + 1}`)} class="stage">
             <div class="stage-top"><span class="stage-n">{i + 1}</span><span class="stage-rule"></span></div>
             <h3>{title}</h3>
             <p>{text}</p>
           </a>
         ))}
       </div>
-      <a href="/offerings/#s6" class="accred">
+      <a href={u("/offerings/#s6")} class="accred">
         <div class="accred-main">
           <span class="accred-n">6</span>
           <div class="accred-text">
@@ -110,10 +111,10 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
   </section>
 
   <section class="block feature">
-    <img src="/assets/lines-arc.png" alt="" class="feature-lines" />
+    <img src={u("/assets/lines-arc.png")} alt="" class="feature-lines" />
     <div class="wrap feature-grid">
       <div class="feature-photo">
-        <img src="/assets/codesign-workshop.jpg" alt="Reference Architecture co-design workshop" />
+        <img src={u("/assets/codesign-workshop.jpg")} alt="Reference Architecture co-design workshop" />
       </div>
       <div class="feature-copy">
         <div class="eyebrow on-dark">Use case</div>
@@ -124,10 +125,10 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
           <div><span class="fs-num">9</span><span class="fs-label">chapters, plus annexes</span></div>
         </div>
         <div class="feature-foot">
-          <a href="/use-cases/" class="btn btn-light">Read the use case <span>→</span></a>
+          <a href={u("/use-cases/")} class="btn btn-light">Read the use case <span>→</span></a>
           <div class="commissioned">
             <span>Commissioned by</span>
-            <img src="/assets/gdda-logo-white.png" alt="Government Digital Delivery Agency" />
+            <img src={u("/assets/gdda-logo-white.png")} alt="Government Digital Delivery Agency" />
           </div>
         </div>
       </div>
@@ -141,7 +142,7 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
           <div class="eyebrow">In the media</div>
           <h2 class="h2">Recent commentary</h2>
         </div>
-        <a href="/blog/" class="link-arrow">Visit the blog <span>→</span></a>
+        <a href={u("/blog/")} class="link-arrow">Visit the blog <span>→</span></a>
       </div>
       <div class="quotes">
         <figure class="quote-main">
@@ -169,14 +170,14 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
         <div class="eyebrow">Our team</div>
         <h2 class="h2">Senior team with a local base</h2>
         <p class="section-lede">Led by Chris Goh and James Little, with people in Auckland and Wellington and a wider team in Australia.</p>
-        <a href="/about/" class="link-arrow team-link">About Valid8 <span>→</span></a>
+        <a href={u("/about/")} class="link-arrow team-link">About Valid8 <span>→</span></a>
       </div>
-      <a href="/about/#team" class="person">
-        <div class="person-photo"><img src="/assets/chris-goh-speaking.jpg" alt="Chris Goh" style="object-position:60% 30%" /></div>
+      <a href={u("/about/#team")} class="person">
+        <div class="person-photo"><img src={u("/assets/chris-goh-speaking.jpg")} alt="Chris Goh" style="object-position:60% 30%" /></div>
         <div class="person-meta"><span class="person-name">Chris Goh</span><span class="person-role">Founder and Director</span></div>
       </a>
-      <a href="/about/#team" class="person">
-        <div class="person-photo"><img src="/assets/james-little.jpg" alt="James Little" style="object-position:50% 30%" /></div>
+      <a href={u("/about/#team")} class="person">
+        <div class="person-photo"><img src={u("/assets/james-little.jpg")} alt="James Little" style="object-position:50% 30%" /></div>
         <div class="person-meta"><span class="person-name">James Little</span><span class="person-role">New Zealand Lead</span></div>
       </a>
     </div>
@@ -199,7 +200,7 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
   .hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(44, 51, 69, 0) 55%, rgba(44, 51, 69, 0.55) 100%); }
   .arc {
     position: absolute; right: -12%; top: -10%; width: 62%; aspect-ratio: 1; background: var(--green-bright);
-    -webkit-mask: url(/assets/lines-arc.png) no-repeat center / contain; mask: url(/assets/lines-arc.png) no-repeat center / contain;
+    -webkit-mask: var(--arc-img) no-repeat center / contain; mask: var(--arc-img) no-repeat center / contain;
     opacity: 0.55; pointer-events: none;
   }
   .stat-card {

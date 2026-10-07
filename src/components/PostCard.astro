@@ -1,4 +1,5 @@
 ---
+import { u } from '../url';
 import { formatDate, postHref, type Post } from '../lib';
 
 interface Props {
@@ -19,7 +20,7 @@ const Tag = href ? 'a' : 'div';
   rel={external ? 'noopener' : undefined}
   data-cat={data.category}
 >
-  <div class="img"><img src={data.image} alt={data.imageAlt} style={`object-position:${data.imagePosition}`} loading="lazy" /></div>
+  <div class="img"><img src={u(data.image)} alt={data.imageAlt} style={`object-position:${data.imagePosition}`} loading="lazy" /></div>
   <div class="meta"><span class="pill">{data.category}</span><span class="date">{formatDate(data.date)}</span>{data.draft && <span class="draft">Draft</span>}</div>
   <h3>{data.title}</h3>
   {!compact && <p class="excerpt">{data.excerpt}</p>}

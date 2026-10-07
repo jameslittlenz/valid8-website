@@ -1,10 +1,11 @@
 ---
+import { u } from '../url';
 import Logo from './Logo.astro';
 import { navLinks } from '../data/site';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
-  <img src="/assets/lines-wide.png" alt="" class="lines" />
+  <img src={u("/assets/lines-wide.png")} alt="" class="lines" />
   <section id="contact" class="wrap contact">
     <div class="intro">
       <div class="eyebrow on-dark">Get in touch</div>
@@ -32,8 +33,8 @@ const year = new Date().getFullYear();
       <div class="links">
         <div class="col">
           <div class="col-head">Site</div>
-          <a href="/">Home</a>
-          {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+          <a href={u("/")}>Home</a>
+          {navLinks.map((l) => <a href={u(l.href)}>{l.label}</a>)}
         </div>
         <div class="col">
           <div class="col-head">Where we are</div>

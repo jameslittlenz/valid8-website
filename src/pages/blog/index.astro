@@ -1,4 +1,5 @@
 ---
+import { u } from '../../url';
 import Base from '../../layouts/Base.astro';
 import PostCard from '../../components/PostCard.astro';
 import { authors } from '../../data/site';
@@ -36,7 +37,7 @@ const featuredAuthor = featured && authors[featured.data.author];
           rel={featuredExternal ? 'noopener' : undefined}
           class="featured"
         >
-          <div class="f-img"><img src={featured.data.image} alt={featured.data.imageAlt} style={`object-position:${featured.data.imagePosition}`} /></div>
+          <div class="f-img"><img src={u(featured.data.image)} alt={featured.data.imageAlt} style={`object-position:${featured.data.imagePosition}`} /></div>
           <div class="f-body">
             <div class="f-top">
               <div class="f-meta"><span class="f-pill">{featured.data.category}</span><span class="f-date">{formatDate(featured.data.date)}</span></div>
@@ -45,7 +46,7 @@ const featuredAuthor = featured && authors[featured.data.author];
             </div>
             <div class="f-foot">
               <div class="f-author">
-                {featuredAuthor && <img src={featuredAuthor.photo} alt="" style={`object-position:${featuredAuthor.photoPosition}`} />}
+                {featuredAuthor && <img src={u(featuredAuthor.photo)} alt="" style={`object-position:${featuredAuthor.photoPosition}`} />}
                 <span>{featured.data.author}</span>
               </div>
               <span class="f-cta">{featuredExternal ? `Read on ${featured.data.outlet ?? 'the original site'} ↗` : 'Read the article →'}</span>

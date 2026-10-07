@@ -1,4 +1,5 @@
 ---
+import { u } from '../url';
 import Base from '../layouts/Base.astro';
 
 const steps = ['Regular workshops, in person and online', 'Whiteboard sessions', 'Draft review and consultation', 'Collective contribution and endorsement'];
@@ -28,7 +29,7 @@ const textCases = [
   <section id="reference-architecture" class="ra">
     <div class="wrap ra-stack">
       <div class="ra-hero">
-        <img src="/assets/codesign-workshop.jpg" alt="Co-design participants" />
+        <img src={u("/assets/codesign-workshop.jpg")} alt="Co-design participants" />
         <div class="ra-shade"></div>
         <div class="ra-title">
           <span class="ra-badge">Featured · Aotearoa New Zealand</span>
@@ -89,7 +90,7 @@ const textCases = [
       <div class="cards-photo">
         {photoCases.map((c) => (
           <article class="card">
-            <div class="card-img"><img src={c.img} alt="" style={`object-position:${c.pos}`} /></div>
+            <div class="card-img"><img src={u(c.img)} alt="" style={`object-position:${c.pos}`} /></div>
             <div class="card-body">
               <span class="card-place">{c.place}</span>
               <h3 class="card-title">{c.title}</h3>

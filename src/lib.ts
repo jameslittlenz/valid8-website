@@ -1,3 +1,4 @@
+import { u } from './url';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 export type Post = CollectionEntry<'posts'>;
@@ -16,7 +17,7 @@ export function hasPage(post: Post): boolean {
 /** Where a post card should link to, or undefined if there's nowhere to go yet. */
 export function postHref(post: Post): string | undefined {
   if (post.data.url) return post.data.url;
-  if (hasPage(post)) return `/blog/${post.id}/`;
+  if (hasPage(post)) return u(`/blog/${post.id}/`);
   return undefined;
 }
 

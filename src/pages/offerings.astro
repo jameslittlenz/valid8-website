@@ -1,4 +1,5 @@
 ---
+import { u } from '../url';
 import Base from '../layouts/Base.astro';
 
 const stages = [
@@ -85,7 +86,7 @@ const accreditation = [
         <h1 class="hero-title">Support across the full lifecycle</h1>
         <p class="lede" style="max-width:560px">We support organisations from initial exploration and use case development through business cases, design, procurement, accreditation, and launch. Clients get a single advisory partner who understands how early decisions play out in delivery, and who stays involved to make sure benefits are realised.</p>
       </div>
-      <div class="hero-photo"><img src="/assets/wallet-phone.jpg" alt="Digital wallet on a phone" /></div>
+      <div class="hero-photo"><img src={u("/assets/wallet-phone.jpg")} alt="Digital wallet on a phone" /></div>
     </div>
   </section>
 
@@ -122,7 +123,7 @@ const accreditation = [
   ))}
 
   <section id="s6" class="stage accred">
-    <img src="/assets/lines-wide.png" alt="" class="accred-lines" />
+    <img src={u("/assets/lines-wide.png")} alt="" class="accred-lines" />
     <div class="wrap stage-grid">
       <div class="stage-copy">
         <span class="stage-label on-dark">06 · ACROSS EVERY STAGE</span>

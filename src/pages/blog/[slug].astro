@@ -1,4 +1,5 @@
 ---
+import { u } from '../../url';
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import PostCard from '../../components/PostCard.astro';
@@ -20,12 +21,12 @@ const more = (await getPosts()).filter((p) => p.id !== post.id && p.data.categor
   <article>
     <header class="head">
       <div class="wrap-narrow head-stack">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="/blog/">Blog</a><span>/</span><span class="pill">{data.category}</span></nav>
+        <nav class="crumbs" aria-label="Breadcrumb"><a href={u("/blog/")}>Blog</a><span>/</span><span class="pill">{data.category}</span></nav>
         <h1>{data.title}</h1>
         <p class="standfirst">{data.excerpt}</p>
         <div class="byline">
           <div class="byline-who">
-            <img src={author.photo} alt="" style={`object-position:${author.photoPosition}`} />
+            <img src={u(author.photo)} alt="" style={`object-position:${author.photoPosition}`} />
             <div><span class="byline-name">{data.author}</span><span class="byline-sub">{author.role} · {formatDate(data.date)}</span></div>
           </div>
           <div class="share">
@@ -38,7 +39,7 @@ const more = (await getPosts()).filter((p) => p.id !== post.id && p.data.categor
 
     <div class="wrap">
       <figure class="hero">
-        <div class="hero-img"><img src={data.image} alt={data.imageAlt} style={`object-position:${data.imagePosition}`} /></div>
+        <div class="hero-img"><img src={u(data.image)} alt={data.imageAlt} style={`object-position:${data.imagePosition}`} /></div>
         {data.imageCaption && <figcaption>{data.imageCaption}</figcaption>}
       </figure>
     </div>
@@ -51,15 +52,15 @@ const more = (await getPosts()).filter((p) => p.id !== post.id && p.data.categor
           <span class="cta-title">Preparing for Trust Framework accreditation?</span>
           <span class="cta-text">We take providers from readiness assessment through independent evaluation to a regulator decision.</span>
         </div>
-        <a href="/offerings/#s6" class="btn btn-light cta-btn">See how we help <span>→</span></a>
+        <a href={u("/offerings/#s6")} class="btn btn-light cta-btn">See how we help <span>→</span></a>
       </div>
 
       <div class="bio">
-        <img src={author.photo} alt="" style={`object-position:${author.photoPosition}`} />
+        <img src={u(author.photo)} alt="" style={`object-position:${author.photoPosition}`} />
         <div class="bio-copy">
           <span class="bio-name">{data.author}</span>
           <span>{author.bio}</span>
-          <a href="/about/#team">About {data.author.split(' ')[0]} →</a>
+          <a href={u("/about/#team")}>About {data.author.split(' ')[0]} →</a>
         </div>
       </div>
     </div>
@@ -70,7 +71,7 @@ const more = (await getPosts()).filter((p) => p.id !== post.id && p.data.categor
       <div class="wrap more-stack">
         <div class="more-head">
           <h2>More insights</h2>
-          <a href="/blog/" class="link-arrow">All posts <span>→</span></a>
+          <a href={u("/blog/")} class="link-arrow">All posts <span>→</span></a>
         </div>
         <div class="more-grid">
           {more.map((p) => <PostCard post={p} compact />)}

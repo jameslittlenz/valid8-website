@@ -10,7 +10,18 @@ npm run preview  # serve dist/
 npm run check    # type-check
 ```
 
-`dist/` is plain HTML/CSS with a few lines of JS (mobile menu, blog filter, copy-link). Host it anywhere static: Netlify, Vercel, Cloudflare Pages, S3, GitHub Pages.
+`dist/` is plain HTML/CSS with a few lines of JS (mobile menu, blog filter, copy-link).
+
+## Deployment
+
+Every push to `main` builds and publishes the site to GitHub Pages via `.github/workflows/deploy.yml`
+(Settings → Pages → Source must be **GitHub Actions**). It's served at
+https://jameslittlenz.github.io/valid8-website/ until a custom domain is set.
+
+The site lives under `/valid8-website/` on that URL, so internal links and images go through `u()` in
+`src/url.ts`, which adds the base path. Use `u('/about/')` rather than a bare `'/about/'` in new
+templates. Image paths in post frontmatter are handled automatically. Adding a custom domain in
+Settings → Pages needs no code changes: the workflow picks up the new URL and drops the base path.
 
 ## Pages
 
@@ -72,4 +83,3 @@ To add an author, add them to `authors` in `src/data/site.ts`.
 - Three Insights posts (`from-federated-identity…`, `preparing-for-trust-framework…`, `iso-18013-5…`) are sample titles from the mockups with no text. They're marked `draft: true`, so they don't appear on the live site until written.
 - The two Chris Goh media items have no link yet. Add `url:` and `outlet:` to make their cards clickable.
 - The DISTF article text was written by the design tool as sample copy and needs James's review.
-- Set `site` in `astro.config.mjs` to the real domain before launch.
