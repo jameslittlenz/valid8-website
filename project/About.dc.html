@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<script>try{document.documentElement.dataset.theme=new URLSearchParams(location.search).get('theme')||localStorage.getItem('v8-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
+<style>:root{--bg:#fff;--surface:#fff;--subtle:var(--subtle);--mint:#EAF3EE;--navy:#2C3345;--ink:#2C3345;--ink2:var(--ink2);--ink3:var(--ink3);--green:#348454;--pill:var(--pill);--line:var(--line);--line2:var(--line2);--line3:var(--line3);--hdr:var(--hdr);--btn:#2C3345;--btn-ink:#fff;color-scheme:light}:root[data-theme=dark]{--bg:#10151F;--surface:#19202D;--subtle:#141A25;--mint:#14251F;--navy:#1B2433;--ink:#EEF2F5;--ink2:#B6BFCC;--ink3:#8E98A9;--green:#5ABE82;--pill:#9FDDB8;--line:rgba(255,255,255,0.09);--line2:rgba(255,255,255,0.15);--line3:rgba(255,255,255,0.1);--hdr:rgba(16,21,31,0.88);--btn:#5ABE82;--btn-ink:#10151F;color-scheme:dark}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:'Onest',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;transition:background .2s}a{color:var(--green)}a:hover{color:#1D995B}</style>
+</helmet>
+<dc-import name="Header" active="about" hint-size="100%,76px" style="position:sticky;top:0;z-index:50"></dc-import>
+<main>
+  <section style="position:relative;overflow:hidden;padding:clamp(56px,8vw,112px) 0 clamp(56px,8vw,96px)">
+    <div style="position:absolute;right:-6%;top:-12%;width:min(620px,60%);aspect-ratio:1/1;background:#1D995B;-webkit-mask-image:url(assets/lines-arc.png);mask-image:url(assets/lines-arc.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;opacity:0.35;pointer-events:none"></div>
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+      <div style="display:flex;flex-direction:column;gap:24px;max-width:900px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green)"><span style="width:28px;height:2px;background:#1D995B"></span>About Valid8</div>
+        <h1 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(40px,6vw,76px);line-height:1.02;letter-spacing:-0.04em;text-wrap:balance">Many advisors stop at strategy. Our point of difference is execution.</h1>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(24px,4vw,56px)">
+        <p style="margin:0;font-size:clamp(19px,1.8vw,22px);line-height:1.55;color:var(--ink);font-weight:500;text-wrap:pretty">We are a specialised advisory firm focused on enabling organisations and public services to deliver meaningful digital service and economic reform.</p>
+        <p style="margin:0;font-size:17px;line-height:1.65;color:var(--ink2);text-wrap:pretty">We partner with clients to implement customer-led approaches that deliver real outcomes across diverse stakeholder environments, whether navigating complex regulatory constraints or operating without established legislative frameworks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:0 0 clamp(72px,10vw,120px)">
+    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(32px,5vw,64px);align-items:center">
+      <div style="border-radius:26px;overflow:hidden;aspect-ratio:1/0.95;background:var(--navy)"><img src="assets/servers.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(28px,3.4vw,40px);line-height:1.12;letter-spacing:-0.03em;text-wrap:balance">We know the complexities of digital identity and verifiable credentials</h2>
+        <p style="margin:0;font-size:17px;line-height:1.65;color:var(--ink2);text-wrap:pretty">Our deep understanding of Digital Identity and Verifiable Credentials stems from direct involvement in national policy development, ISO-standards implementation, international trust framework design, and cross-jurisdictional interoperability initiatives. We have navigated the technical, regulatory, and stakeholder coordination challenges that define successful digital identity adoption.</p>
+        <p style="margin:0;font-size:17px;line-height:1.65;color:var(--ink2);text-wrap:pretty">This includes leading Australia's first digital wallet rollout to assessing ecosystem readiness across Europe and the United States. This practical experience equips us to evaluate the diverse maturity levels and institutional contexts across jurisdictions, allowing us to tailor solutions and strategies while enabling international interoperability.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--mint);padding:clamp(72px,10vw,120px) 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green)"><span style="width:28px;height:2px;background:#1D995B"></span>Core capabilities</div>
+        <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(30px,4vw,46px);line-height:1.1;letter-spacing:-0.03em">What we bring</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:14px">
+        <div style="background:var(--surface);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-family:'Sora',sans-serif;font-size:18px;font-weight:600;letter-spacing:-0.01em">Government advisory experience</h3><p style="margin:0;font-size:15.5px;line-height:1.55;color:var(--ink2)">Over seven years advising and leading governments on digital identity, including co-chairing Australia's National Verifiable Credentials Working Group, leading New Zealand’s Digital Identity Services Trust Framework, and advising across Europe and Asia.</p></div>
+        <div style="background:var(--surface);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-family:'Sora',sans-serif;font-size:18px;font-weight:600;letter-spacing:-0.01em">Digital identity and infrastructure expertise</h3><p style="margin:0;font-size:15.5px;line-height:1.55;color:var(--ink2)">International expert in digital identity and VCs since 2018, led Australia's first ISO-standards digital wallet rollout, and the implementation of New Zealand’s Digital Identity Services Trust Framework.</p></div>
+        <div style="background:var(--surface);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-family:'Sora',sans-serif;font-size:18px;font-weight:600;letter-spacing:-0.01em">Multi-country and regional management</h3><p style="margin:0;font-size:15.5px;line-height:1.55;color:var(--ink2)">Conducted global VC assessments across Europe and the United States and led national initiatives across jurisdictions.</p></div>
+        <div style="background:var(--surface);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-family:'Sora',sans-serif;font-size:18px;font-weight:600;letter-spacing:-0.01em">Multidisciplinary policy research</h3><p style="margin:0;font-size:15.5px;line-height:1.55;color:var(--ink2)">Delivered Queensland's State ICT Maturity Assessment and hosted four international summits coordinating multi-stakeholder consultations on VC interoperability.</p></div>
+        <div style="background:var(--surface);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-family:'Sora',sans-serif;font-size:18px;font-weight:600;letter-spacing:-0.01em">Political economy understanding</h3><p style="margin:0;font-size:15.5px;line-height:1.55;color:var(--ink2)">Developed national cross-border VC architecture for government, banks, and community services, navigating complex institutional stakeholder environments.</p></div>
+        <div style="background:var(--surface);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-family:'Sora',sans-serif;font-size:18px;font-weight:600;letter-spacing:-0.01em">Analytical and communication capacity</h3><p style="margin:0;font-size:15.5px;line-height:1.55;color:var(--ink2)">Synthesised complex findings into whole-of-government investment strategies and national digital identity adoption priorities for stakeholders.</p></div>
+        <div style="background:var(--surface);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-family:'Sora',sans-serif;font-size:18px;font-weight:600;letter-spacing:-0.01em">Multilingual operational capacity</h3><p style="margin:0;font-size:15.5px;line-height:1.55;color:var(--ink2)">International engagement across Europe demonstrates cross-cultural coordination capability.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" style="scroll-margin-top:80px;padding:clamp(72px,10vw,120px) 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;flex-direction:column;gap:clamp(48px,7vw,88px)">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green)"><span style="width:28px;height:2px;background:#1D995B"></span>Our team</div>
+        <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(30px,4vw,46px);line-height:1.1;letter-spacing:-0.03em">Senior team with a local base</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,5vw,64px);align-items:start">
+        <div style="border-radius:24px;overflow:hidden;aspect-ratio:4/4.6;background:var(--mint)"><img src="assets/chris-goh-speaking.jpg" alt="Chris Goh" style="width:100%;height:100%;object-fit:cover;object-position:60% 30%;display:block"></div>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:clamp(28px,3vw,36px);font-weight:600;letter-spacing:-0.03em">Chris Goh</h3>
+            <span style="font-size:17px;font-weight:500;color:var(--green)">Valid8 Founder and Director</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="padding:6px 12px;border-radius:999px;border:1px solid var(--line2);font-size:13.5px">Public servant for 30 years, now founder</span>
+            <span style="padding:6px 12px;border-radius:999px;border:1px solid var(--line2);font-size:13.5px">Legislative, architectural, CX specialist</span>
+          </div>
+          <p style="margin:0;font-size:17px;line-height:1.65;color:var(--ink2);text-wrap:pretty">Chris is an experienced executive and digital identity specialist with more than a decade of senior executive engagement across government, industry and regional bodies on digital transformation and cross-border digital policy and legislation.</p>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line)">
+            <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.5"><span style="width:6px;height:6px;border-radius:50%;background:#1D995B;flex:none;margin-top:9px"></span>Standards expert in verifiable credentials (VCs)</li>
+            <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.5"><span style="width:6px;height:6px;border-radius:50%;background:#1D995B;flex:none;margin-top:9px"></span>Established national harmonisation of VCs in Australia</li>
+            <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.5"><span style="width:6px;height:6px;border-radius:50%;background:#1D995B;flex:none;margin-top:9px"></span>Recently worked with the European Commission to support their first EUDI Wallet launch and testing</li>
+            <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.5"><span style="width:6px;height:6px;border-radius:50%;background:#1D995B;flex:none;margin-top:9px"></span>Supporting New Zealand in the cross-industry co-design of their identity and VC architecture</li>
+            <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.5"><span style="width:6px;height:6px;border-radius:50%;background:#1D995B;flex:none;margin-top:9px"></span>Implemented the first ISO-compliant digital wallet in Queensland, which has won a number of national accolades for inclusion, accessibility and customer design</li>
+            <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.5"><span style="width:6px;height:6px;border-radius:50%;background:#1D995B;flex:none;margin-top:9px"></span>Co-chaired national working groups on VCs and assisted in developing state and national legislation and policy on the use and adoption of verifiable credentials</li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,5vw,64px);align-items:start">
+        <div style="border-radius:24px;overflow:hidden;aspect-ratio:4/4.6;background:var(--mint)"><img src="assets/james-little.jpg" alt="James Little" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block"></div>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:clamp(28px,3vw,36px);font-weight:600;letter-spacing:-0.03em">James Little</h3>
+            <span style="font-size:17px;font-weight:500;color:var(--green)">New Zealand Lead</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="padding:6px 12px;border-radius:999px;border:1px solid var(--line2);font-size:13.5px">Senior government adviser for a decade</span>
+            <span style="padding:6px 12px;border-radius:999px;border:1px solid var(--line2);font-size:13.5px">Policy, legislative, regulatory specialist</span>
+          </div>
+          <p style="margin:0;font-size:17px;line-height:1.65;color:var(--ink2);text-wrap:pretty">James has spent a decade advising at the most senior levels of the New Zealand Government on digital government and digital identity. He excels where clear direction is needed between competing policy, political and technical realities.</p>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line)">
+            <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.5"><span style="width:6px;height:6px;border-radius:50%;background:#1D995B;flex:none;margin-top:9px"></span>Advised former PM and senior ministers on digital policy for six years</li>
+            <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.5"><span style="width:6px;height:6px;border-radius:50%;background:#1D995B;flex:none;margin-top:9px"></span>Led development of the Digital Identity Services Trust Framework and the regulatory regime under which the first services were accredited</li>
+            <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.5"><span style="width:6px;height:6px;border-radius:50%;background:#1D995B;flex:none;margin-top:9px"></span>Key role building New Zealand’s digital identity infrastructure and modernising regulation across government</li>
+            <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.5"><span style="width:6px;height:6px;border-radius:50%;background:#1D995B;flex:none;margin-top:9px"></span>Engages governments and speaks at conferences across Asia and Australia</li>
+            <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.5"><span style="width:6px;height:6px;border-radius:50%;background:#1D995B;flex:none;margin-top:9px"></span>Deep grasp of digital strategy, policy and legislative design, and of verifiable credentials technology and standards</li>
+            <li style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px;line-height:1.5"><span style="width:6px;height:6px;border-radius:50%;background:#1D995B;flex:none;margin-top:9px"></span>Contributing author on the DISTF Reference Architecture, with deep knowledge of ISO 18013-5/23220 standards and implementation</li>
+          </ul>
+        </div>
+      </div>
+      <div style="background:var(--navy);color:#fff;border-radius:24px;padding:clamp(28px,4vw,44px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px">
+        <p style="margin:0;font-family:'Sora',sans-serif;font-size:clamp(20px,2.2vw,26px);font-weight:500;line-height:1.35;letter-spacing:-0.015em;max-width:560px;text-wrap:balance">Chris and James are supported by a wider team based across New Zealand and Australia.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);font-size:15px"><span style="width:8px;height:8px;border-radius:50%;background:#5ABE82"></span>Auckland</span>
+          <span style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);font-size:15px"><span style="width:8px;height:8px;border-radius:50%;background:#5ABE82"></span>Wellington</span>
+          <span style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);font-size:15px"><span style="width:8px;height:8px;border-radius:50%;background:#5ABE82"></span>Australia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<dc-import name="Footer" hint-size="100%,640px"></dc-import>
+</x-dc>
+</body>
+</html>

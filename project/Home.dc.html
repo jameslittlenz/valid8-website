@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<script>try{document.documentElement.dataset.theme=new URLSearchParams(location.search).get('theme')||localStorage.getItem('v8-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
+<style>:root{--bg:#fff;--surface:#fff;--subtle:var(--subtle);--mint:#EAF3EE;--navy:#2C3345;--ink:#2C3345;--ink2:var(--ink2);--ink3:var(--ink3);--green:#348454;--pill:var(--pill);--line:var(--line);--line2:var(--line2);--line3:var(--line3);--hdr:var(--hdr);--btn:#2C3345;--btn-ink:#fff;color-scheme:light}:root[data-theme=dark]{--bg:#10151F;--surface:#19202D;--subtle:#141A25;--mint:#14251F;--navy:#1B2433;--ink:#EEF2F5;--ink2:#B6BFCC;--ink3:#8E98A9;--green:#5ABE82;--pill:#9FDDB8;--line:rgba(255,255,255,0.09);--line2:rgba(255,255,255,0.15);--line3:rgba(255,255,255,0.1);--hdr:rgba(16,21,31,0.88);--btn:#5ABE82;--btn-ink:#10151F;color-scheme:dark}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:'Onest',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;transition:background .2s}a{color:var(--green)}a:hover{color:#1D995B}</style>
+</helmet>
+<dc-import name="Header" active="home" hint-size="100%,76px" style="position:sticky;top:0;z-index:50"></dc-import>
+<main>
+  <section style="padding:clamp(48px,7vw,96px) 0 clamp(56px,8vw,104px);overflow:hidden">
+    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:clamp(40px,6vw,72px);align-items:center">
+      <div style="display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green)"><span style="width:28px;height:2px;background:#1D995B;flex:none"></span>Digital identity advisory · Aotearoa New Zealand</div>
+        <h1 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(40px,5.6vw,68px);line-height:1.04;letter-spacing:-0.035em;color:var(--ink);text-wrap:balance">Trusted advisers to government on digital identity</h1>
+        <p style="margin:0;font-size:clamp(18px,1.6vw,20px);line-height:1.55;color:var(--ink2);max-width:540px;text-wrap:pretty">A decade at the heart of government on digital identity, from policy and legislation to ministerial advice and delivery.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:4px">
+          <a href="Offerings.dc.html" style="display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;background:#348454;color:var(--btn-ink);font-size:16px;font-weight:600;text-decoration:none" style-hover="background:var(--btn);color:var(--btn-ink)">Explore our services <span>→</span></a>
+          <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;border:1.5px solid var(--btn);color:var(--ink);font-size:16px;font-weight:600;text-decoration:none" style-hover="background:var(--btn);color:var(--btn-ink)">Get in touch</a>
+        </div>
+      </div>
+      <div style="position:relative">
+        <div style="position:relative;border-radius:28px;overflow:hidden;aspect-ratio:1/1.08;background:var(--mint)">
+          <img src="assets/beehive.jpg" alt="The Beehive, Wellington" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,51,69,0) 55%,rgba(44,51,69,0.55) 100%)"></div>
+        </div>
+        <div style="position:absolute;right:-12%;top:-10%;width:62%;aspect-ratio:1/1;background:#1D995B;-webkit-mask-image:url(assets/lines-arc.png);mask-image:url(assets/lines-arc.png);-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;opacity:0.55;pointer-events:none"></div>
+        <div style="position:absolute;left:20px;right:20px;bottom:20px;max-width:340px;background:var(--surface);border-radius:18px;padding:20px 22px;display:flex;gap:16px;align-items:center;box-shadow:0 12px 32px rgba(28,51,78,0.18)">
+          <div style="font-family:'Sora',sans-serif;font-size:40px;font-weight:600;letter-spacing:-0.03em;color:var(--green);line-height:1">40+</div>
+          <div style="font-size:14px;line-height:1.45;color:var(--ink2)">public and private organisations co-designed the DISTF Reference Architecture with us</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--subtle)">
+    <div style="max-width:1200px;margin:0 auto;padding:24px clamp(20px,5vw,48px);display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px">
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3)">Built on international standards</span>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span style="padding:7px 12px;border:1px solid var(--line2);border-radius:8px;background:var(--surface);font-size:14px;font-weight:500">ISO/IEC 18013-5</span>
+        <span style="padding:7px 12px;border:1px solid var(--line2);border-radius:8px;background:var(--surface);font-size:14px;font-weight:500">ISO/IEC 23220</span>
+        <span style="padding:7px 12px;border:1px solid var(--line2);border-radius:8px;background:var(--surface);font-size:14px;font-weight:500">OID4VCI</span>
+        <span style="padding:7px 12px;border:1px solid var(--line2);border-radius:8px;background:var(--surface);font-size:14px;font-weight:500">OID4VP</span>
+        <span style="padding:7px 12px;border:1px solid var(--line2);border-radius:8px;background:var(--surface);font-size:14px;font-weight:500">W3C Digital Credentials API</span>
+        <span style="padding:7px 12px;border:1px solid var(--line2);border-radius:8px;background:var(--surface);font-size:14px;font-weight:500">DISTF Act 2023</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(72px,10vw,128px) 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;flex-direction:column;gap:clamp(40px,5vw,64px)">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+        <div style="display:flex;flex-direction:column;gap:18px;max-width:640px">
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green)"><span style="width:28px;height:2px;background:#1D995B"></span>Why Valid8</div>
+          <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(30px,4vw,46px);line-height:1.1;letter-spacing:-0.03em;text-wrap:balance">Strategy is the start. Our point of difference is execution.</h2>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden">
+        <div style="background:var(--surface);padding:32px;display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--green)">01</span>
+          <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:21px;font-weight:600;letter-spacing:-0.02em">Trusted advisors to government</h3>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:var(--ink2)">We understand how decisions get made, what ministers and boards need to see, and how to build the authorising environment that lets significant change happen.</p>
+        </div>
+        <div style="background:var(--surface);padding:32px;display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--green)">02</span>
+          <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:21px;font-weight:600;letter-spacing:-0.02em">Deep understanding of digital identity</h3>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:var(--ink2)">We understand decentralised digital identity, verifiable credentials and digital wallets, and participate in the international standards that underpin them.</p>
+        </div>
+        <div style="background:var(--surface);padding:32px;display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--green)">03</span>
+          <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:21px;font-weight:600;letter-spacing:-0.02em">From legacy to verifiable credentials</h3>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:var(--ink2)">Moving from centralised and federated identity models to verifiable credentials is as much an organisational shift as a technical one.</p>
+        </div>
+        <div style="background:var(--surface);padding:32px;display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--green)">04</span>
+          <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:21px;font-weight:600;letter-spacing:-0.02em">From start to finish</h3>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:var(--ink2)">A single advisory partner who understands how early decisions play out in delivery, and who stays involved to make sure benefits are realised.</p>
+        </div>
+        <div style="background:var(--surface);padding:32px;display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--green)">05</span>
+          <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:21px;font-weight:600;letter-spacing:-0.02em">Frameworks, accreditations, guardrails</h3>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:var(--ink2)">For over a decade we have advised on national identity and accreditation frameworks that provide guardrails for trust and interoperability.</p>
+        </div>
+        <div style="background:var(--surface);padding:32px;display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--green)">06</span>
+          <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:21px;font-weight:600;letter-spacing:-0.02em">Global experience, local base</h3>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:var(--ink2)">Key personnel in Auckland and Wellington, supported by our team in Australia, combining global perspective with first-hand knowledge of New Zealand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--mint);padding:clamp(72px,10vw,128px) 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;flex-direction:column;gap:clamp(36px,5vw,56px)">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+        <div style="display:flex;flex-direction:column;gap:18px;max-width:680px">
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green)"><span style="width:28px;height:2px;background:#1D995B"></span>Offerings</div>
+          <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(30px,4vw,46px);line-height:1.1;letter-spacing:-0.03em;text-wrap:balance">Support across the full lifecycle</h2>
+          <p style="margin:0;font-size:18px;line-height:1.55;color:var(--ink2);text-wrap:pretty">Five service stages, from workshops and governance through design, procurement, launch and continuous improvement.</p>
+        </div>
+        <a href="Offerings.dc.html" style="display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:2px solid #1D995B;padding-bottom:4px" style-hover="color:var(--green)">All offerings <span>→</span></a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px">
+        <a href="Offerings.dc.html#s1" style="background:var(--surface);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:var(--ink);min-height:240px;border:1px solid transparent" style-hover="border-color:#1D995B;color:var(--ink)">
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:32px;height:32px;border-radius:50%;background:var(--btn);color:var(--btn-ink);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:14px;font-weight:600">1</span><span style="flex:1;height:1px;background:var(--line2)"></span></div>
+          <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:18px;font-weight:600;line-height:1.25;letter-spacing:-0.01em">Introduction, Assessment, Workshops, and Demos</h3>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--ink2)">Use cases, a technical demonstration and a clear scoping report.</p>
+        </a>
+        <a href="Offerings.dc.html#s2" style="background:var(--surface);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:var(--ink);min-height:240px;border:1px solid transparent" style-hover="border-color:#1D995B;color:var(--ink)">
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:32px;height:32px;border-radius:50%;background:var(--btn);color:var(--btn-ink);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:14px;font-weight:600">2</span><span style="flex:1;height:1px;background:var(--line2)"></span></div>
+          <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:18px;font-weight:600;line-height:1.25;letter-spacing:-0.01em">Planning and Governance</h3>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--ink2)">Business cases that stand up to boards, ministers and investment panels.</p>
+        </a>
+        <a href="Offerings.dc.html#s3" style="background:var(--surface);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:var(--ink);min-height:240px;border:1px solid transparent" style-hover="border-color:#1D995B;color:var(--ink)">
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:32px;height:32px;border-radius:50%;background:var(--btn);color:var(--btn-ink);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:14px;font-weight:600">3</span><span style="flex:1;height:1px;background:var(--line2)"></span></div>
+          <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:18px;font-weight:600;line-height:1.25;letter-spacing:-0.01em">Design and Experience</h3>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--ink2)">Customer-centred design and standards-aligned architecture.</p>
+        </a>
+        <a href="Offerings.dc.html#s4" style="background:var(--surface);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:var(--ink);min-height:240px;border:1px solid transparent" style-hover="border-color:#1D995B;color:var(--ink)">
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:32px;height:32px;border-radius:50%;background:var(--btn);color:var(--btn-ink);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:14px;font-weight:600">4</span><span style="flex:1;height:1px;background:var(--line2)"></span></div>
+          <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:18px;font-weight:600;line-height:1.25;letter-spacing:-0.01em">Partner, Procure, Operate</h3>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--ink2)">Market scans, tenders, negotiation and service management.</p>
+        </a>
+        <a href="Offerings.dc.html#s5" style="background:var(--surface);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:var(--ink);min-height:240px;border:1px solid transparent" style-hover="border-color:#1D995B;color:var(--ink)">
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:32px;height:32px;border-radius:50%;background:var(--btn);color:var(--btn-ink);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:14px;font-weight:600">5</span><span style="flex:1;height:1px;background:var(--line2)"></span></div>
+          <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:18px;font-weight:600;line-height:1.25;letter-spacing:-0.01em">Assure, Launch, and Improve</h3>
+          <p style="margin:0;font-size:15px;line-height:1.55;color:var(--ink2)">Testing, security readiness, launch and benefits realisation.</p>
+        </a>
+      </div>
+      <a href="Offerings.dc.html#s6" style="background:var(--navy);border-radius:18px;padding:clamp(24px,3vw,32px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;text-decoration:none;color:#fff;position:relative;overflow:hidden" style-hover="background:#1C334E;color:#fff">
+        <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+          <span style="width:40px;height:40px;border-radius:50%;background:#5ABE82;color:#1C334E;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:16px;font-weight:600;flex:none">6</span>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:'Sora',sans-serif;font-size:clamp(19px,2vw,22px);font-weight:600">Trust Framework Accreditation</span>
+            <span style="font-size:15px;color:#C9D1DC">From readiness assessment through independent evaluation to a regulator decision.</span>
+          </div>
+        </div>
+        <span style="font-size:15px;font-weight:600;color:#5ABE82">Learn more →</span>
+      </a>
+    </div>
+  </section>
+
+  <section style="background:var(--navy);color:#fff;padding:clamp(72px,10vw,128px) 0;position:relative;overflow:hidden">
+    <img src="assets/lines-arc.png" alt="" style="position:absolute;left:-10%;bottom:-30%;width:min(700px,70%);opacity:0.12;pointer-events:none">
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,6vw,72px);align-items:center">
+      <div style="border-radius:24px;overflow:hidden;aspect-ratio:4/3.4;background:#1C334E">
+        <img src="assets/codesign-workshop.jpg" alt="Reference Architecture co-design workshop" style="width:100%;height:100%;object-fit:cover;display:block">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#5ABE82"><span style="width:28px;height:2px;background:#5ABE82"></span>Use case</div>
+        <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(30px,4vw,46px);line-height:1.1;letter-spacing:-0.03em;text-wrap:balance">Trust Framework Reference Architecture</h2>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#D5DBE4;text-wrap:pretty">We led the co-design of the DISTF Reference Architecture with over 40 public and private sector organisations. It is the common reference point for everyone building digital identity services in Aotearoa New Zealand.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:rgba(255,255,255,0.14);border-radius:14px;overflow:hidden">
+          <div style="background:var(--navy);padding:18px 4px 18px 0;display:flex;flex-direction:column;gap:4px"><span style="font-family:'Sora',sans-serif;font-size:32px;font-weight:600;color:#5ABE82;letter-spacing:-0.02em">40+</span><span style="font-size:14px;color:#C9D1DC">organisations</span></div>
+          <div style="background:var(--navy);padding:18px 4px 18px 20px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'Sora',sans-serif;font-size:32px;font-weight:600;color:#5ABE82;letter-spacing:-0.02em">9</span><span style="font-size:14px;color:#C9D1DC">chapters, plus annexes</span></div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding-top:4px">
+          <a href="Use%20Cases.dc.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;background:#5ABE82;color:#1C334E;font-size:16px;font-weight:600;text-decoration:none" style-hover="background:#fff;color:#1C334E">Read the use case <span>→</span></a>
+          <div style="display:flex;align-items:center;gap:12px"><span style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#8E98A9">Commissioned by</span><img src="assets/gdda-logo-white.png" alt="Government Digital Delivery Agency" style="height:36px;width:auto"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(72px,10vw,128px) 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;flex-direction:column;gap:clamp(36px,5vw,56px)">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green)"><span style="width:28px;height:2px;background:#1D995B"></span>In the media</div>
+          <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(30px,4vw,46px);line-height:1.1;letter-spacing:-0.03em">Recent commentary</h2>
+        </div>
+        <a href="Blog.dc.html" style="display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:2px solid #1D995B;padding-bottom:4px" style-hover="color:var(--green)">Visit the blog <span>→</span></a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px">
+        <figure style="flex:2 1 480px;margin:0;background:var(--mint);border-radius:24px;padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;justify-content:space-between;gap:32px">
+          <span style="font-family:'Sora',sans-serif;font-size:72px;line-height:0.6;color:#1D995B;height:36px">“</span>
+          <blockquote style="margin:0;font-family:'Sora',sans-serif;font-size:clamp(20px,2.3vw,27px);font-weight:500;line-height:1.4;letter-spacing:-0.015em;text-wrap:pretty">Your legislation and regulations are designed for inclusion, and that co-design process I was part of… you really have to lift your hat to the New Zealand Government for bringing in industry and the community.</blockquote>
+          <figcaption style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:16px">Chris Goh</span><span style="font-size:14px;color:var(--ink2)">Nine to Noon, 9 September 2026</span></figcaption>
+        </figure>
+        <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:16px">
+          <figure style="margin:0;flex:1;border:1px solid var(--line2);border-radius:24px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:20px">
+            <blockquote style="margin:0;font-size:18px;line-height:1.5;font-weight:500">“When I say, would it be useful if you had your driver’s licence or your passport on your phone, [people] say, ‘Sign me up immediately’.”</blockquote>
+            <figcaption style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:15px">James Little</span><a href="https://www.nzherald.co.nz/the-listener/new-zealand/ok-computer-the-coming-revolution-in-digital-ids/premium/7VN7DXXKFRE7TKEJGASUPSKN2M/" target="_blank" rel="noopener" style="font-size:14px;color:var(--green)">OK computer: The coming revolution in digital IDs ↗</a></figcaption>
+          </figure>
+          <figure style="margin:0;flex:1;border:1px solid var(--line2);border-radius:24px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:20px">
+            <blockquote style="margin:0;font-size:18px;line-height:1.5;font-weight:500">“The cryptography is actually much stronger than your credit card in some ways as well.”</blockquote>
+            <figcaption style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:15px">Chris Goh</span><span style="font-size:14px;color:var(--ink2)">Digital driver’s licences: Will hackers and government be able to track you?</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:0 0 clamp(72px,10vw,128px)">
+    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(24px,4vw,48px);align-items:start">
+      <div style="display:flex;flex-direction:column;gap:18px;padding-top:8px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green)"><span style="width:28px;height:2px;background:#1D995B"></span>Our team</div>
+        <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(30px,4vw,46px);line-height:1.1;letter-spacing:-0.03em;text-wrap:balance">Senior team with a local base</h2>
+        <p style="margin:0;font-size:18px;line-height:1.55;color:var(--ink2);text-wrap:pretty">Led by Chris Goh and James Little, with people in Auckland and Wellington and a wider team in Australia.</p>
+        <a href="About.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:2px solid #1D995B;padding-bottom:4px;margin-top:8px" style-hover="color:var(--green)">About Valid8 <span>→</span></a>
+      </div>
+      <a href="About.dc.html#team" style="display:flex;flex-direction:column;gap:16px;text-decoration:none;color:var(--ink)">
+        <div style="border-radius:20px;overflow:hidden;aspect-ratio:4/4.4;background:var(--mint)"><img src="assets/chris-goh-speaking.jpg" alt="Chris Goh" style="width:100%;height:100%;object-fit:cover;object-position:60% 30%;display:block"></div>
+        <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Sora',sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.02em">Chris Goh</span><span style="font-size:15px;color:var(--ink2)">Founder and Director</span></div>
+      </a>
+      <a href="About.dc.html#team" style="display:flex;flex-direction:column;gap:16px;text-decoration:none;color:var(--ink)">
+        <div style="border-radius:20px;overflow:hidden;aspect-ratio:4/4.4;background:var(--mint)"><img src="assets/james-little.jpg" alt="James Little" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block"></div>
+        <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Sora',sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.02em">James Little</span><span style="font-size:15px;color:var(--ink2)">New Zealand Lead</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+<dc-import name="Footer" hint-size="100%,640px"></dc-import>
+</x-dc>
+</body>
+</html>

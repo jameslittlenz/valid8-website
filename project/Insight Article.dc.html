@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<script>try{document.documentElement.dataset.theme=new URLSearchParams(location.search).get('theme')||localStorage.getItem('v8-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
+<style>:root{--bg:#fff;--surface:#fff;--subtle:var(--subtle);--mint:#EAF3EE;--navy:#2C3345;--ink:#2C3345;--ink2:var(--ink2);--ink3:var(--ink3);--green:#348454;--pill:var(--pill);--line:var(--line);--line2:var(--line2);--line3:var(--line3);--hdr:var(--hdr);--btn:#2C3345;--btn-ink:#fff;color-scheme:light}:root[data-theme=dark]{--bg:#10151F;--surface:#19202D;--subtle:#141A25;--mint:#14251F;--navy:#1B2433;--ink:#EEF2F5;--ink2:#B6BFCC;--ink3:#8E98A9;--green:#5ABE82;--pill:#9FDDB8;--line:rgba(255,255,255,0.09);--line2:rgba(255,255,255,0.15);--line3:rgba(255,255,255,0.1);--hdr:rgba(16,21,31,0.88);--btn:#5ABE82;--btn-ink:#10151F;color-scheme:dark}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:'Onest',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;transition:background .2s}a{color:var(--green)}a:hover{color:#1D995B}</style>
+</helmet>
+<dc-import name="Header" active="blog" hint-size="100%,76px" style="position:sticky;top:0;z-index:50"></dc-import>
+<main>
+  <article>
+    <header style="padding:clamp(40px,6vw,80px) 0 clamp(32px,4vw,48px)">
+      <div style="max-width:880px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;flex-direction:column;gap:24px">
+        <nav style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px;color:var(--ink3)"><a href="Blog.dc.html" style="color:var(--ink3);text-decoration:none" style-hover="color:var(--green)">Blog</a><span>/</span><span style="padding:4px 10px;border-radius:999px;background:var(--mint);color:var(--pill);font-weight:600;font-size:13px">Insights</span></nav>
+        <h1 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(36px,5vw,58px);line-height:1.06;letter-spacing:-0.035em;text-wrap:balance">Putting the DISTF Reference Architecture to work</h1>
+        <p style="margin:0;font-size:clamp(19px,1.8vw,22px);line-height:1.5;color:var(--ink2);text-wrap:pretty">What the nine chapters cover, and where to start if you are building a digital identity service in Aotearoa.</p>
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding-top:20px;border-top:1px solid var(--line)">
+          <div style="display:flex;align-items:center;gap:12px">
+            <img src="assets/james-little.jpg" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:50% 25%">
+            <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:600">James Little</span><span style="font-size:14px;color:var(--ink3)">New Zealand Lead · 2 October 2026</span></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <a href="#" aria-label="Share on LinkedIn" style="width:40px;height:40px;border-radius:50%;border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none" style-hover="border-color:var(--ink);color:var(--ink)">in</a>
+            <a href="#" aria-label="Copy link" style="width:40px;height:40px;border-radius:50%;border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink);text-decoration:none" style-hover="border-color:var(--ink);color:var(--ink)">⧉</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px)">
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <div style="border-radius:26px;overflow:hidden;aspect-ratio:21/9;min-height:240px;background:var(--mint)"><img src="assets/codesign-workshop.jpg" alt="Reference Architecture co-design participants" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block"></div>
+        <figcaption style="font-size:14px;color:var(--ink3)">Participants in the Reference Architecture co-design.</figcaption>
+      </figure>
+    </div>
+
+    <div style="max-width:880px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(20px,5vw,48px) clamp(64px,8vw,96px);display:flex;flex-direction:column;gap:24px;font-size:18px;line-height:1.7;color:var(--ink2)">
+      <p style="margin:0;font-size:clamp(20px,1.9vw,22px);line-height:1.6;color:var(--ink);text-wrap:pretty">The Digital Identity Services Trust Framework Act 2023 sets the rules for digital identity services in New Zealand. The Reference Architecture is the practical blueprint for putting those rules into operation.</p>
+      <p style="margin:0;text-wrap:pretty">It is publicly available, and it is the common reference point for everyone building digital identity services in Aotearoa. If you are planning to issue credentials, build a wallet, or accept digital identity in your service, this is where to begin.</p>
+
+      <h2 style="margin:24px 0 0;font-family:'Sora',sans-serif;font-size:clamp(24px,2.6vw,30px);font-weight:600;line-height:1.2;letter-spacing:-0.02em;color:var(--ink)">What it defines</h2>
+      <p style="margin:0;text-wrap:pretty">Across nine chapters, annexes and supporting implementation guidance, the architecture sets out what is needed to issue, hold and present digital identity credentials securely, with accessibility, inclusion and privacy built in.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px;background:var(--line3);border:1px solid var(--line3);border-radius:18px;overflow:hidden;margin:8px 0">
+        <div style="background:var(--mint);padding:20px 22px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'Sora',sans-serif;font-size:16px;font-weight:600;color:var(--ink)">Roles</span><span style="font-size:15px;line-height:1.5">Who issues, holds and relies on a credential</span></div>
+        <div style="background:var(--mint);padding:20px 22px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'Sora',sans-serif;font-size:16px;font-weight:600;color:var(--ink)">Trust model</span><span style="font-size:15px;line-height:1.5">How each party knows it can rely on the others</span></div>
+        <div style="background:var(--mint);padding:20px 22px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'Sora',sans-serif;font-size:16px;font-weight:600;color:var(--ink)">Assurance levels</span><span style="font-size:15px;line-height:1.5">How much confidence a credential carries</span></div>
+        <div style="background:var(--mint);padding:20px 22px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'Sora',sans-serif;font-size:16px;font-weight:600;color:var(--ink)">Data model</span><span style="font-size:15px;line-height:1.5">What a credential contains and how it is structured</span></div>
+        <div style="background:var(--mint);padding:20px 22px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'Sora',sans-serif;font-size:16px;font-weight:600;color:var(--ink)">Standards</span><span style="font-size:15px;line-height:1.5">The protocols and formats every service uses</span></div>
+      </div>
+
+      <h2 style="margin:24px 0 0;font-family:'Sora',sans-serif;font-size:clamp(24px,2.6vw,30px);font-weight:600;line-height:1.2;letter-spacing:-0.02em;color:var(--ink)">Built with the sector</h2>
+      <p style="margin:0;text-wrap:pretty">Valid8 Advisory led the co-design, drafting and consultation, commissioned by the Government Digital Delivery Agency (then the Department of Internal Affairs). Over 40 organisations across the public and private sectors took part through regular workshops in person and online, whiteboard sessions, draft review and consultation, and collective contribution and endorsement.</p>
+
+      <blockquote style="margin:20px 0;padding:8px 0 8px 28px;border-left:3px solid #1D995B;font-family:'Sora',sans-serif;font-size:clamp(22px,2.4vw,28px);font-weight:500;line-height:1.35;letter-spacing:-0.015em;color:var(--ink);text-wrap:balance">The common reference point for everyone building digital identity services in Aotearoa New Zealand.</blockquote>
+
+      <h2 style="margin:8px 0 0;font-family:'Sora',sans-serif;font-size:clamp(24px,2.6vw,30px);font-weight:600;line-height:1.2;letter-spacing:-0.02em;color:var(--ink)">Aligned internationally</h2>
+      <p style="margin:0;text-wrap:pretty">The architecture aligns with international standards and practice to support cross-border interoperability, so a credential issued in New Zealand can work alongside those issued elsewhere.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span style="padding:7px 12px;border:1px solid var(--line2);border-radius:8px;font-size:14px;font-weight:500;color:var(--ink)">ISO/IEC 18013-5</span>
+        <span style="padding:7px 12px;border:1px solid var(--line2);border-radius:8px;font-size:14px;font-weight:500;color:var(--ink)">ISO/IEC 23220</span>
+        <span style="padding:7px 12px;border:1px solid var(--line2);border-radius:8px;font-size:14px;font-weight:500;color:var(--ink)">W3C</span>
+        <span style="padding:7px 12px;border:1px solid var(--line2);border-radius:8px;font-size:14px;font-weight:500;color:var(--ink)">IETF</span>
+        <span style="padding:7px 12px;border:1px solid var(--line2);border-radius:8px;font-size:14px;font-weight:500;color:var(--ink)">OpenID</span>
+        <span style="padding:7px 12px;border:1px solid var(--line2);border-radius:8px;font-size:14px;font-weight:500;color:var(--ink)">EU</span>
+      </div>
+
+      <h2 style="margin:24px 0 0;font-family:'Sora',sans-serif;font-size:clamp(24px,2.6vw,30px);font-weight:600;line-height:1.2;letter-spacing:-0.02em;color:var(--ink)">Where to start</h2>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px">
+        <li style="display:flex;gap:16px;align-items:flex-start"><span style="width:32px;height:32px;border-radius:50%;background:var(--btn);color:var(--btn-ink);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;flex:none;margin-top:2px">1</span><span style="text-wrap:pretty"><strong style="color:var(--ink)">Identify your role.</strong> Work out whether you will issue, hold or rely on credentials, and read the chapters that apply.</span></li>
+        <li style="display:flex;gap:16px;align-items:flex-start"><span style="width:32px;height:32px;border-radius:50%;background:var(--btn);color:var(--btn-ink);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;flex:none;margin-top:2px">2</span><span style="text-wrap:pretty"><strong style="color:var(--ink)">Assess your readiness.</strong> Compare your current systems and processes against the requirements.</span></li>
+        <li style="display:flex;gap:16px;align-items:flex-start"><span style="width:32px;height:32px;border-radius:50%;background:var(--btn);color:var(--btn-ink);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;flex:none;margin-top:2px">3</span><span style="text-wrap:pretty"><strong style="color:var(--ink)">Plan your path to accreditation.</strong> Decide which services to accredit and how you will meet the identification management, privacy and security requirements.</span></li>
+      </ol>
+      <p style="margin:0">Read the full document on <a href="https://github.com/nz-trust-framework/DISTF-reference-architecture" style="font-weight:600">GitHub ↗</a></p>
+
+      <div style="margin-top:24px;background:var(--navy);color:#fff;border-radius:22px;padding:clamp(24px,3.5vw,36px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;position:relative;overflow:hidden">
+        <div style="display:flex;flex-direction:column;gap:6px;max-width:440px">
+          <span style="font-family:'Sora',sans-serif;font-size:21px;font-weight:600;line-height:1.3">Preparing for Trust Framework accreditation?</span>
+          <span style="font-size:15px;line-height:1.5;color:#C9D1DC">We take providers from readiness assessment through independent evaluation to a regulator decision.</span>
+        </div>
+        <a href="Offerings.dc.html#s6" style="display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;background:#5ABE82;color:#1C334E;font-size:15px;font-weight:600;text-decoration:none" style-hover="background:#fff;color:#1C334E">See how we help <span>→</span></a>
+      </div>
+
+      <div style="margin-top:16px;padding-top:28px;border-top:1px solid var(--line);display:flex;gap:18px;align-items:flex-start">
+        <img src="assets/james-little.jpg" alt="" style="width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 25%;flex:none">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-family:'Sora',sans-serif;font-size:17px;font-weight:600;color:var(--ink)">James Little</span>
+          <span style="font-size:15px;line-height:1.55">New Zealand Lead at Valid8 Advisory and contributing author on the DISTF Reference Architecture.</span>
+          <a href="About.dc.html#team" style="font-size:15px;font-weight:600">About James →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <section style="background:var(--subtle);border-top:1px solid var(--line);padding:clamp(56px,8vw,96px) 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px">
+        <h2 style="margin:0;font-family:'Sora',sans-serif;font-weight:600;font-size:clamp(26px,3vw,34px);letter-spacing:-0.025em">More insights</h2>
+        <a href="Blog.dc.html" style="display:inline-flex;align-items:center;gap:8px;font-size:16px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:2px solid #1D995B;padding-bottom:4px" style-hover="color:var(--green)">All posts <span>→</span></a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:24px">
+        <a href="#" style="display:flex;flex-direction:column;gap:14px;text-decoration:none;color:var(--ink)" style-hover="color:var(--green)">
+          <div style="border-radius:20px;overflow:hidden;aspect-ratio:16/10.5;background:var(--mint)"><img src="assets/beehive.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block"></div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="padding:4px 10px;border-radius:999px;background:var(--mint);color:var(--pill);font-weight:600">Insights</span><span style="color:var(--ink3)">15 September 2026</span></div>
+          <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:20px;font-weight:600;line-height:1.28;letter-spacing:-0.02em">Preparing for Trust Framework accreditation</h3>
+        </a>
+        <a href="#" style="display:flex;flex-direction:column;gap:14px;text-decoration:none;color:var(--ink)" style-hover="color:var(--green)">
+          <div style="border-radius:20px;overflow:hidden;aspect-ratio:16/10.5;background:var(--mint)"><img src="assets/servers.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="padding:4px 10px;border-radius:999px;background:var(--mint);color:var(--pill);font-weight:600">Insights</span><span style="color:var(--ink3)">24 September 2026</span></div>
+          <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:20px;font-weight:600;line-height:1.28;letter-spacing:-0.02em">From federated identity to verifiable credentials</h3>
+        </a>
+        <a href="#" style="display:flex;flex-direction:column;gap:14px;text-decoration:none;color:var(--ink)" style-hover="color:var(--green)">
+          <div style="border-radius:20px;overflow:hidden;aspect-ratio:16/10.5;background:var(--mint)"><img src="assets/wallet-phone.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px"><span style="padding:4px 10px;border-radius:999px;background:var(--mint);color:var(--pill);font-weight:600">Insights</span><span style="color:var(--ink3)">2 September 2026</span></div>
+          <h3 style="margin:0;font-family:'Sora',sans-serif;font-size:20px;font-weight:600;line-height:1.28;letter-spacing:-0.02em">ISO 18013-5 and 23220, explained</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+<dc-import name="Footer" hint-size="100%,640px"></dc-import>
+</x-dc>
+</body>
+</html>
