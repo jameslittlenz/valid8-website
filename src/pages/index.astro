@@ -1,6 +1,7 @@
 ---
 import { u } from '../url';
 import Base from '../layouts/Base.astro';
+import { serviceAreas, engagementModels } from '../data/site';
 
 const standards = ['ISO/IEC 18013-5', 'ISO/IEC 23220', 'OID4VCI', 'OID4VP', 'W3C Digital Credentials API', 'DISTF Act 2023'];
 
@@ -50,8 +51,13 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
   </section>
 
   <section class="standards">
-    <div class="wrap standards-row">
-      <span class="standards-label">Built on international standards</span>
+    <div class="wrap standards-wrap">
+      <div class="standards-intro">
+        <span class="standards-label">Built on international standards</span>
+        <h2 class="standards-title">We advise based on global standards &amp; experience</h2>
+        <p class="standards-text">Valid8 has contributed to developing global standards for verifiable credentials through organisations including ISO, W3C, FIDO and OpenID. We have taken part in international interoperability meetings and reviewed implementations across Web3, Hyperledger and other blockchain technologies, and we help organisations stay interoperable by adopting standardised approaches.</p>
+        <p class="standards-text">Europe, North America, Australia, Japan, the Philippines and many other countries are considering or implementing ISO/IEC standards, with the ISO/IEC 18013-5 mobile driver licence standard seeing widespread adoption.</p>
+      </div>
       <div class="standards-list">
         {standards.map((s) => <span class="std-chip">{s}</span>)}
       </div>
@@ -69,6 +75,31 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
       <div class="reasons">
         {reasons.map(([title, text], i) => (
           <div class="reason">
+            <span class="reason-n">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="block advisory">
+    <div class="wrap stack">
+      <div class="section-head">
+        <div style="max-width:680px">
+          <div class="eyebrow">Our advisory services</div>
+          <h2 class="h2">End-to-end expertise, wherever you are on the journey</h2>
+          <p class="section-lede">We work with global service partners, adapted to the requirements of each jurisdiction, and we will meet you where you are.</p>
+        </div>
+      </div>
+      <ul class="areas">
+        {serviceAreas.map((a) => <li>{a}</li>)}
+      </ul>
+      <div class="models-head">How we engage</div>
+      <div class="models">
+        {engagementModels.map(([title, text], i) => (
+          <div class="model">
             <span class="reason-n">{String(i + 1).padStart(2, '0')}</span>
             <h3>{title}</h3>
             <p>{text}</p>
@@ -212,7 +243,10 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
   .stat-text { font-size: 14px; line-height: 1.45; color: var(--ink2); }
 
   .standards { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--subtle); }
-  .standards-row { padding-top: 24px; padding-bottom: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
+  .standards-wrap { padding-top: 40px; padding-bottom: 40px; display: flex; flex-direction: column; gap: 24px; }
+  .standards-intro { display: flex; flex-direction: column; gap: 14px; max-width: 780px; }
+  .standards-title { font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.02em; text-wrap: balance; }
+  .standards-text { font-size: 16px; line-height: 1.6; color: var(--ink2); }
   .standards-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); }
   .standards-list { display: flex; flex-wrap: wrap; gap: 8px; }
   .standards-list .std-chip { background: var(--surface); }
@@ -229,6 +263,17 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
   .reason-n { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--green); }
   .reason h3 { font-size: 21px; letter-spacing: -0.02em; }
   .reason p { font-size: 16px; line-height: 1.6; color: var(--ink2); }
+
+  .areas { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .areas li { background: var(--mint); border-radius: 999px; padding: 10px 18px; font-size: 15px; font-weight: 500; }
+  .models-head { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: -24px; }
+  .models {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 20px; overflow: hidden;
+  }
+  .model { background: var(--surface); padding: 28px; display: flex; flex-direction: column; gap: 12px; }
+  .model h3 { font-size: 20px; letter-spacing: -0.02em; }
+  .model p { font-size: 15px; line-height: 1.55; color: var(--ink2); }
 
   .offerings { background: var(--mint); }
   .offerings .stack { gap: clamp(36px, 5vw, 56px); }
