@@ -1,18 +1,20 @@
 ---
 import { u } from '../url';
 interface Props {
-  height?: number;
+  /** Pixels, or any CSS length such as a custom property. */
+  height?: number | string;
   /** Always use the white logo, e.g. on navy backgrounds. */
   onDark?: boolean;
 }
 const { height = 38, onDark = false } = Astro.props;
+const h = typeof height === 'number' ? `${height}px` : height;
 ---
 {onDark ? (
-  <img src={u("/assets/valid8-logo-light.png")} alt="Valid8 Advisory" style={`height:${height}px`} class="logo" />
+  <img src={u("/assets/valid8-logo-light.png")} alt="Valid8 Advisory" style={`height:${h}`} class="logo" />
 ) : (
   <picture>
     <source srcset={u("/assets/valid8-logo-light.png")} media="(prefers-color-scheme: dark)" />
-    <img src={u("/assets/valid8-logo-dark.png")} alt="Valid8 Advisory" style={`height:${height}px`} class="logo" />
+    <img src={u("/assets/valid8-logo-dark.png")} alt="Valid8 Advisory" style={`height:${h}`} class="logo" />
   </picture>
 )}
 

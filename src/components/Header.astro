@@ -8,7 +8,7 @@ const { active = 'home' } = Astro.props;
 ---
 <header class="site-header" data-open="false">
   <div class="wrap bar">
-    <a href={u("/")} class="home-link"><Logo /></a>
+    <a href={u("/")} class="home-link"><Logo height="calc(76px - var(--shrink))" /></a>
 
     <div class="wide">
       <nav aria-label="Main">
@@ -34,6 +34,11 @@ const { active = 'home' } = Astro.props;
   </div>
 </header>
 
+<script is:inline>
+  // Set the logo size before first paint so it doesn't jump on load.
+  document.querySelector('.site-header').style.setProperty('--shrink', Math.min(scrollY, 38) + 'px');
+</script>
+
 <script>
   const header = document.querySelector<HTMLElement>('.site-header')!;
   const btn = header.querySelector<HTMLButtonElement>('.menu-btn')!;
@@ -44,16 +49,33 @@ const { active = 'home' } = Astro.props;
   btn.addEventListener('click', () => setOpen(header.dataset.open !== 'true'));
   header.querySelectorAll('.mobile-menu a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
   matchMedia('(min-width: 960px)').addEventListener('change', (e) => { if (e.matches) setOpen(false); });
+
+  // The logo starts at double size and shrinks over the first 38px of scroll.
+  let ticking = false;
+  const update = () => {
+    header.style.setProperty('--shrink', `${Math.min(scrollY, 38)}px`);
+    ticking = false;
+  };
+  addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
 </script>
 
 <style>
+  /* The header is 38px taller than the bar it settles into and sticks at
+     top: -38px, so it keeps a constant height in the page while the extra
+     38px scrolls away. --shrink (0 to 38px, set from scrollY) pads the bar
+     down and shortens it to match, keeping its contents centred in what's
+     visible as the logo shrinks from 76px to 38px. Without JS it stays compact. */
   .site-header {
-    position: sticky; top: 0; z-index: 50;
+    --shrink: 38px;
+    position: sticky; top: -38px; z-index: 50; padding-top: var(--shrink);
     background: var(--hdr);
     backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line);
   }
-  .bar { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .bar { height: calc(114px - var(--shrink)); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
   .home-link { display: flex; align-items: center; flex: none; }
 
   .wide { display: none; align-items: center; gap: 14px; }
