@@ -63,6 +63,19 @@ img { max-width: 100%; }
 h1, h2, h3 { font-family: var(--font-display); font-weight: 600; margin: 0; }
 p { margin: 0; text-wrap: pretty; }
 
+/* Page transitions: native cross-document view transitions, so existing scripts keep working.
+   The header is pinned so only the page content crossfades. */
+@view-transition { navigation: auto; }
+.site-header { view-transition-name: site-header; }
+main { view-transition-name: page; }
+::view-transition-old(page) { animation: 160ms ease-out both vt-out; }
+::view-transition-new(page) { animation: 240ms ease-out 60ms both vt-in; }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(8px); } }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}
+
 /* Layout */
 .wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--gutter); }
 .wrap-narrow { max-width: 880px; margin: 0 auto; padding: 0 var(--gutter); }

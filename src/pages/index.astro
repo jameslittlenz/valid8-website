@@ -3,15 +3,15 @@ import { u } from '../url';
 import Base from '../layouts/Base.astro';
 import { serviceAreas, engagementModels } from '../data/site';
 
-const standards = ['ISO/IEC 18013-5', 'ISO/IEC 23220', 'OID4VCI', 'OID4VP', 'W3C Digital Credentials API', 'DISTF Act 2023'];
+const standards = ['ISO/IEC 18013-5/7', 'ISO/IEC 23220', 'SD-JWT VC', 'OID4VCI', 'OID4VP', 'W3C Digital Credentials API'];
 
 const reasons = [
-  ['Trusted advisors to government', 'We understand how decisions get made, what ministers and boards need to see, and how to build the authorising environment that lets significant change happen.'],
+  ['Trusted advisors to government and industry', 'We understand how decisions get made, what decision makers need to see, and how to build the authorising environment that lets significant change happen.'],
   ['Deep understanding of digital identity', 'We understand decentralised digital identity, verifiable credentials and digital wallets, and participate in the international standards that underpin them.'],
   ['From legacy to verifiable credentials', 'Moving from centralised and federated identity models to verifiable credentials is as much an organisational shift as a technical one.'],
   ['From start to finish', 'A single advisory partner who understands how early decisions play out in delivery, and who stays involved to make sure benefits are realised.'],
   ['Frameworks, accreditations, guardrails', 'For over a decade we have advised on national identity and accreditation frameworks that provide guardrails for trust and interoperability.'],
-  ['Global experience, local base', 'Based in Brisbane and Wellington and working internationally, combining global perspective with first-hand knowledge of Australia and New Zealand.'],
+  ['Global experience, local base', 'Based in Brisbane and Wellington and working internationally, combining global perspective with first-hand knowledge.'],
 ];
 
 const stages = [
@@ -26,50 +26,27 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
 ---
 <Base title="Home" active="home">
   <section class="hero">
-    <div class="wrap hero-grid">
+    <img src={u("/assets/beehive.jpg")} alt="The Beehive, Wellington" class="hero-bg" fetchpriority="high" />
+    <div class="hero-shade"></div>
+    <div class="arc" aria-hidden="true" style={`--arc-img:url(${u("/assets/lines-arc.png")})`}></div>
+    <div class="wrap hero-inner">
       <div class="hero-copy">
-        <div class="eyebrow">Digital identity advisory · Global · Australia · New Zealand</div>
-        <h1 class="hero-title">Trusted advisers to government on digital identity</h1>
-        <p class="lede hero-lede">A decade at the heart of government on digital identity, from policy and legislation to ministerial advice and delivery.</p>
+        <h1 class="hero-title">Trusted advisers on digital identity</h1>
+        <p class="hero-lede">A decade at the heart of government and industry on digital identity, spanning policy, legislation, user experience, procurement, delivery, and assurance.</p>
         <div class="hero-ctas">
-          <a href={u("/offerings/")} class="btn btn-green">Explore our services <span>→</span></a>
-          <a href="#contact" class="btn btn-outline">Get in touch</a>
-        </div>
-      </div>
-      <div class="hero-media">
-        <div class="hero-photo">
-          <img src={u("/assets/beehive.jpg")} alt="The Beehive, Wellington" />
-          <div class="hero-shade"></div>
-        </div>
-        <div class="arc" aria-hidden="true" style={`--arc-img:url(${u("/assets/lines-arc.png")})`}></div>
-        <div class="stat-card">
-          <div class="stat-num">40+</div>
-          <div class="stat-text">public and private organisations co-designed the DISTF Reference Architecture with us</div>
+          <a href={u("/offerings/")} class="btn btn-light">Explore our services <span>→</span></a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="standards">
-    <div class="wrap standards-wrap">
-      <div class="standards-intro">
-        <span class="standards-label">Built on international standards</span>
-        <h2 class="standards-title">We advise based on global standards &amp; experience</h2>
-        <p class="standards-text">Valid8 has contributed to developing global standards for verifiable credentials through organisations including ISO, W3C, FIDO and OpenID. We have taken part in international interoperability meetings and reviewed implementations across Web3, Hyperledger and other blockchain technologies, and we help organisations stay interoperable by adopting standardised approaches.</p>
-        <p class="standards-text">Europe, North America, Australia, Japan, the Philippines and many other countries are considering or implementing ISO/IEC standards, with the ISO/IEC 18013-5 mobile driver licence standard seeing widespread adoption.</p>
-      </div>
-      <div class="standards-list">
-        {standards.map((s) => <span class="std-chip">{s}</span>)}
-      </div>
-    </div>
-  </section>
 
-  <section class="block">
+  <section class="block why">
     <div class="wrap stack">
       <div class="section-head">
-        <div style="max-width:640px">
-          <div class="eyebrow">Why Valid8</div>
-          <h2 class="h2">Strategy is the start. Our point of difference is execution.</h2>
+        <div style="max-width:1040px">
+          <h2 class="h2">Strategy is the <b>start</b>.</h2><h2 class="h2">Our point of difference is <b>execution</b>.</h2>
         </div>
       </div>
       <div class="reasons">
@@ -84,6 +61,22 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
     </div>
   </section>
 
+  <section class="standards">
+    <div class="wrap standards-wrap">
+      <div class="standards-intro">
+        <span class="standards-label">Built on international standards</span>
+        <h2 class="standards-title">We advise based on global standards &amp; experience</h2>
+        <p class="standards-text">Valid8 Advisory promotes, aligns, and helps develop global standards for verifiable credentials and are involved in organisations including ISO, W3C, FIDO and OpenID.</p>
+        <p class="standards-text">We have led international interoperability meetings and reviewed implementations across standards-based frameworks, helping organisations stay interoperable by adopting standardised approaches.</p>
+        <p class="standards-text">Aligning with global standards is essential with Europe, North America, Japan, Australia, New Zealand and others implementing ISO/IEC standards, with the ISO/IEC 18013-5 mobile driver licence standard seeing widespread adoption.</p>
+      </div>
+      <div class="standards-list">
+        {standards.map((s) => <span class="std-chip">{s}</span>)}
+      </div>
+    </div>
+  </section>
+
+<!--
   <section class="block advisory">
     <div class="wrap stack">
       <div class="section-head">
@@ -108,14 +101,15 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
       </div>
     </div>
   </section>
+-->
 
   <section class="block offerings">
     <div class="wrap stack">
       <div class="section-head">
-        <div style="max-width:680px">
+        <div style="max-width:1040px">
           <div class="eyebrow">Offerings</div>
           <h2 class="h2">Support across the full lifecycle</h2>
-          <p class="section-lede">Five service stages, from workshops and governance through design, procurement, launch and continuous improvement.</p>
+          <p class="section-lede">From workshops and governance through design, procurement, launch and continuous improvement.</p>
         </div>
         <a href={u("/offerings/")} class="link-arrow">All offerings <span>→</span></a>
       </div>
@@ -132,8 +126,8 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
         <div class="accred-main">
           <span class="accred-n">6</span>
           <div class="accred-text">
-            <span class="accred-title">Trust Framework Accreditation</span>
-            <span class="accred-sub">From readiness assessment through independent evaluation to a regulator decision.</span>
+            <span class="accred-title">Accreditation and Conformance</span>
+            <span class="accred-sub">Support across jurisdictions, including the EU, New Zealand, Australia and the US, from readiness assessment through independent evaluation to a regulator decision.</span>
           </div>
         </div>
         <span class="accred-more">Learn more →</span>
@@ -150,7 +144,7 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
       <div class="feature-copy">
         <div class="eyebrow on-dark">Use case</div>
         <h2 class="h2">Trust Framework Reference Architecture</h2>
-        <p class="feature-text">We led the co-design of the DISTF Reference Architecture with over 40 public and private sector organisations. It is the common reference point for everyone building digital identity services in Aotearoa New Zealand.</p>
+        <p class="feature-text">We led the co-design of New Zealand's DISTF Reference Architecture with over 40 public and private sector organisations. It is the common reference point for everyone building digital identity services in Aotearoa New Zealand.</p>
         <div class="feature-stats">
           <div><span class="fs-num">40+</span><span class="fs-label">organisations</span></div>
           <div><span class="fs-num">9</span><span class="fs-label">chapters, plus annexes</span></div>
@@ -159,14 +153,14 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
           <a href={u("/use-cases/")} class="btn btn-light">Read the use case <span>→</span></a>
           <div class="commissioned">
             <span>Commissioned by</span>
-            <img src={u("/assets/gdda-logo-white.png")} alt="Government Digital Delivery Agency" />
+            <img src={u("/assets/gdda_white_small.png")} alt="Government Digital Delivery Agency" />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="block">
+  <section class="block media">
     <div class="wrap stack">
       <div class="section-head">
         <div>
@@ -208,7 +202,7 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
         <div class="person-meta"><span class="person-name">Chris Goh</span><span class="person-role">Founder and Director</span></div>
       </a>
       <a href={u("/about/#team")} class="person">
-        <div class="person-photo"><img src={u("/assets/james-little.jpg")} alt="James Little" style="object-position:50% 30%" /></div>
+        <div class="person-photo"><img src={u("/assets/james-little2.jpg")} alt="James Little" style="object-position:50% 30%" /></div>
         <div class="person-meta"><span class="person-name">James Little</span><span class="person-role">New Zealand Lead</span></div>
       </a>
     </div>
@@ -216,23 +210,20 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
 </Base>
 
 <style>
-  .hero { padding: clamp(48px, 7vw, 96px) 0 clamp(56px, 8vw, 104px); overflow: hidden; }
-  .hero-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
-    gap: clamp(40px, 6vw, 72px); align-items: center;
-  }
-  .hero-copy { display: flex; flex-direction: column; gap: 28px; }
+  .hero { position: relative; overflow: hidden; color: #fff; background: var(--navy-deep); display: flex; align-items: flex-end; min-height: clamp(520px, 78vh, 760px); }
+  .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+  .hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(28, 51, 78, 0.85) 0%, rgba(28, 51, 78, 0.55) 55%, rgba(28, 51, 78, 0.2) 100%), linear-gradient(180deg, rgba(28, 51, 78, 0) 50%, rgba(28, 51, 78, 0.5) 100%); }
+  .hero-inner { position: relative; width: 100%; padding-top: clamp(48px, 7vw, 96px); padding-bottom: clamp(48px, 7vw, 96px); }
+  .hero-copy { display: flex; flex-direction: column; gap: 28px; max-width: 680px; }
   .hero-title { font-size: clamp(40px, 5.6vw, 68px); line-height: 1.04; letter-spacing: -0.035em; text-wrap: balance; }
-  .hero-lede { max-width: 540px; }
+  .hero-lede { font-size: clamp(18px, 1.6vw, 20px); line-height: 1.55; color: #E3E8EF; max-width: 540px; }
   .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; padding-top: 4px; }
-  .hero-media { position: relative; }
-  .hero-photo { position: relative; border-radius: 28px; overflow: hidden; aspect-ratio: 1 / 1.08; background: var(--mint); }
-  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
-  .hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(44, 51, 69, 0) 55%, rgba(44, 51, 69, 0.55) 100%); }
+  .btn-ghost { border: 1.5px solid rgba(255, 255, 255, 0.7); color: #fff; }
+  .btn-ghost:hover { background: #fff; color: var(--navy-deep); }
   .arc {
-    position: absolute; right: -12%; top: -10%; width: 62%; aspect-ratio: 1; background: var(--green-bright);
+    position: absolute; right: -6%; top: -20%; width: min(640px, 55%); aspect-ratio: 1; background: var(--green-light);
     -webkit-mask: var(--arc-img) no-repeat center / contain; mask: var(--arc-img) no-repeat center / contain;
-    opacity: 0.55; pointer-events: none;
+    opacity: 0.35; pointer-events: none;
   }
   .stat-card {
     position: absolute; left: 20px; right: 20px; bottom: 20px; max-width: 340px;
@@ -243,13 +234,13 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
   .stat-text { font-size: 14px; line-height: 1.45; color: var(--ink2); }
 
   .standards { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--subtle); }
-  .standards-wrap { padding-top: 40px; padding-bottom: 40px; display: flex; flex-direction: column; gap: 24px; }
-  .standards-intro { display: flex; flex-direction: column; gap: 14px; max-width: 780px; }
+  .standards-wrap { padding-top: clamp(48px, 6vw, 72px); padding-bottom: clamp(48px, 6vw, 72px); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 32px; }
+  .standards-intro { display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 780px; }
   .standards-title { font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.02em; text-wrap: balance; }
   .standards-text { font-size: 16px; line-height: 1.6; color: var(--ink2); }
   .standards-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); }
-  .standards-list { display: flex; flex-wrap: wrap; gap: 8px; }
-  .standards-list .std-chip { background: var(--surface); }
+  .standards-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .standards-list .std-chip { background: var(--surface); padding: 12px 22px; border-radius: 12px; font-size: 18px; font-weight: 600; }
 
   .block { padding: clamp(72px, 10vw, 128px) 0; }
   .stack { display: flex; flex-direction: column; gap: clamp(40px, 5vw, 64px); }
@@ -275,6 +266,8 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
   .model h3 { font-size: 20px; letter-spacing: -0.02em; }
   .model p { font-size: 15px; line-height: 1.55; color: var(--ink2); }
 
+  .why { background: var(--mint); }
+  .why .reasons { border-color: var(--line2); }
   .offerings { background: var(--mint); }
   .offerings .stack { gap: clamp(36px, 5vw, 56px); }
   .stages { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px; }
@@ -331,10 +324,11 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
   .commissioned span { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #8E98A9; }
   .commissioned img { height: 36px; width: auto; }
 
+  .media { background: var(--subtle); }
   .quotes { display: flex; flex-wrap: wrap; gap: 16px; }
   .quotes figure { margin: 0; }
   .quote-main {
-    flex: 2 1 480px; background: var(--mint); border-radius: 24px; padding: clamp(28px, 4vw, 48px);
+    flex: 2 1 480px; background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: clamp(28px, 4vw, 48px);
     display: flex; flex-direction: column; justify-content: space-between; gap: 32px;
   }
   .quote-mark { font-family: var(--font-display); font-size: 72px; line-height: 0.6; color: var(--green-bright); height: 36px; }
@@ -354,7 +348,7 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
   .q-src { font-size: 14px; color: var(--ink2); }
   .q-link { font-size: 14px; color: var(--green); }
 
-  .team { padding: 0 0 clamp(72px, 10vw, 128px); }
+  .team { background: var(--mint); padding: clamp(72px, 10vw, 128px) 0; }
   .team-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
     gap: clamp(24px, 4vw, 48px); align-items: start;
@@ -363,7 +357,7 @@ const okComputer = 'https://www.nzherald.co.nz/the-listener/new-zealand/ok-compu
   .team-link { align-self: flex-start; margin-top: 8px; }
   .person { display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: var(--ink); }
   .person:hover { color: var(--ink); }
-  .person-photo { border-radius: 20px; overflow: hidden; aspect-ratio: 4 / 4.4; background: var(--mint); }
+  .person-photo { border-radius: 20px; overflow: hidden; aspect-ratio: 4 / 4.4; background: var(--surface); }
   .person-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .person-meta { display: flex; flex-direction: column; gap: 4px; }
   .person-name { font-family: var(--font-display); font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }

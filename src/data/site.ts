@@ -1,8 +1,9 @@
-export type NavId = 'home' | 'offerings' | 'use-cases' | 'about' | 'blog';
+export type NavId = 'home' | 'offerings' | 'use-cases' | 'atlas' | 'about' | 'blog';
 
 export const navLinks: { id: NavId; label: string; href: string }[] = [
   { id: 'offerings', label: 'Offerings', href: '/offerings/' },
   { id: 'use-cases', label: 'Use cases', href: '/use-cases/' },
+  { id: 'atlas', label: 'Atlas', href: '/atlas/' },
   { id: 'about', label: 'About', href: '/about/' },
   { id: 'blog', label: 'Blog', href: '/blog/' },
 ];
@@ -12,7 +13,7 @@ export const authors = {
   'James Little': {
     role: 'New Zealand Lead',
     bio: 'New Zealand Lead at Valid8 Advisory and contributing author on the DISTF Reference Architecture.',
-    photo: '/assets/james-little.jpg',
+    photo: '/assets/james-little2.jpg',
     photoPosition: '50% 25%',
   },
   'Chris Goh': {
